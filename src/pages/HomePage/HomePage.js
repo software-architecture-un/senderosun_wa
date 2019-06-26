@@ -3,6 +3,7 @@ import './HomePage.css';
 import Camara from '../../images/camara.png';
 import Ruta from '../../images/rutas.png';
 import Actividad from '../../images/actividad.png';
+import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
 
@@ -12,8 +13,8 @@ class HomePage extends React.Component {
 
                 <div className="HeaderLandig">
                     <div className="PosicionBotones">
-                        <a className="BotonIniciarSesion" href="/login"> Iniciar Sesión </a>
-                        <a className="BotonCrearCuenta" href="/register"> Crear cuenta </a>
+                        <Link to="/login" className="BotonIniciarSesion" > Iniciar Sesión </Link>
+                        <Link to="/register" className="BotonCrearCuenta" > Crear cuenta </Link>
                     </div>
                     <h1 className="TituloLanding"> Senderos UN </h1>
                 </div>
