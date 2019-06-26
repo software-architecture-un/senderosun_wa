@@ -1,12 +1,13 @@
 import React from 'react';
-import './UserDataPage.css';
 import ErrorPage from '../../components/Errors/ErrorPage';
 import IpGraphql from '../../components/conection/IpGraphql';
+import UserDataPageSuccess from './UserDataPageSuccess';
 
 
 class UserDataPage extends React.Component {
 
     state = {
+        load: <ErrorPage />
     }
 
     componentDidMount() {
@@ -37,7 +38,7 @@ class UserDataPage extends React.Component {
                 if (res.data.verifyToken != null) {
                     this.setState({
                         status: res.data.verifyToken.status,
-                        authorization: true,
+                        load: <UserDataPageSuccess />,
                     })
                     console.log(res.data.verifyToken.status)
                 }
@@ -49,47 +50,11 @@ class UserDataPage extends React.Component {
     }
 
     render() {
-        if (this.state.authorization) {
-            return (
-                < div className="UserDataPage" >
-                    {console.log("CARGA EL TRUE")}
-                    <div className="BarraMenuLateral">
-                        <div className="MiniDatoUsuario">
-                            <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                            <h2 className="NombreUsuario">Fulanito Perez</h2>
-                        </div>
-                        <div className="OpcionMenu">
-                            <h2 className="NombreMenu DatosPersonales">MODIFICAR DATOS</h2>
-                        </div>
-                        <div className="OpcionMenu">
-                            <h2 className="NombreMenu CrearListas">CREAR LISTAS</h2>
-                        </div>
-                        <div className="OpcionMenu">
-                            <h2 className="NombreMenu VerListas">VER LISTAS</h2>
-                        </div>
-                        <div className="OpcionMenu">
-                            <h2 className="NombreMenu  Lugares">LUGARES</h2>
-                        </div>
-                        <div className="OpcionMenu">
-                            <h2 className="NombreMenu EliminarCuenta">ELIMINAR CUENTA</h2>
-                        </div>
-                        <div className="OpcionMenu">
-                            <h2 className="NombreMenu CerrarSesion">SALIR</h2>
-                        </div>
-                    </div>
-                    <div className="ObjetivoMenuLateral">
-                        <h1>CAMPOS</h1>
-                    </div>
-                </div >
-            );
-        } else {
-            return (
-                <div>
-                    {console.log("CARGA EL FALSE")}
-                    <ErrorPage />
-                </div>
-            );
-        }
+        return (
+            <div>
+                {this.state.load}
+            </div>
+        );
     }
 }
 
