@@ -21,7 +21,9 @@ class HomePage extends React.Component {
                 <div className="BodyLandig">
                     <div className="CajaGaleria">
                         <h2 className="SubTitulos">Galeria De Fotos</h2>
-                        <img src={Camara} width="250" height="250" alt="Imagen_Camara"></img>
+                        <a href="/gallery">
+                            <img src={Camara} width="250" height="250" alt="Imagen_Camara"></img>
+                        </a>
                         <div className="TextoJustificado">
                             <p>En nuestra galeria podras las fotos que mas les han gustado a nuestros usuarios.</p>
                             <p>Muestranos como ves el mundo.</p>
@@ -30,7 +32,9 @@ class HomePage extends React.Component {
 
                     <div className="CajaImagenes">
                         <h2 className="SubTitulos">Rutas</h2>
-                        <img src={Ruta} width="250" height="250" alt="Imagen_Ruta" ></img>
+                        <a href="/routes">
+                            <img src={Ruta} width="250" height="250" alt="Imagen_Ruta" ></img>
+                        </a>
                         <div className="TextoJustificado">
                             <p>Aqui encontraras las rutas preferidas por los usarios.</p>
                             <p>Camina, conduce y descubre los caminos que el mundo tiene preparado para ti-</p>
@@ -40,7 +44,9 @@ class HomePage extends React.Component {
 
                     <div className="CajaActividades">
                         <h2 className="SubTitulos">Actividades</h2>
-                        <img className="ImagenActividades" src={Actividad} width="200" height="200" alt="Imagen_Ruta" ></img>
+                        <a href="/activities">
+                            <img className="ImagenActividades" src={Actividad} width="200" height="200" alt="Imagen_Ruta" ></img>
+                        </a>
                         <div className="TextoJustificado">
                             <p>Comparte en familia y con amigos de miles de actividades que estan esperando por ti.</p>
                             <p>Cambia tu rutina ven y descubre lo que tenemos preparado para ti.</p>
