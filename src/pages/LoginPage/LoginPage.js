@@ -1,6 +1,7 @@
 import React from 'react';
 import './LoginPage.css';
 import IpGraphql from '../../components/conection/IpGraphql';
+import { Link } from 'react-router-dom';
 
 class LoginPage extends React.Component {
 
@@ -68,7 +69,7 @@ class LoginPage extends React.Component {
                 }
             })
             .catch(console.log("DATOS INCORRECTOS"))
-        e.preventDefault()
+        // e.preventDefault()
     }
 
     render() {
@@ -84,8 +85,8 @@ class LoginPage extends React.Component {
                         <input name="CampoPassword" onChange={this.handleChange} className="InputPassword" value={this.state.CampoPassword}  ></input>
                     </div>
                     <div className="BotonesEntrarVolver">
-                        <a href="/user" onClick={this.handleClick} className="BotonEntrar">Entrar</a>
-                        <a onClick={this.handleProbar} className="BotonRegresar" href="/">Regresar</a>
+                        <Link onClick={this.handleClick} className="BotonEntrar">Entrar</Link>
+                        <Link to="/" onClick={this.handleProbar} className="BotonRegresar" >Regresar</Link>
                     </div>
                 </div>
             </div>

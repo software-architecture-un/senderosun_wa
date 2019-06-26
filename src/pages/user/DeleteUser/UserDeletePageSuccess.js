@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import IpGraphql from '../../../components/conection/IpGraphql';
+import './UserDeletePage.css';
 
 class UserDeletePageSuccess extends React.Component {
 
@@ -15,28 +18,50 @@ class UserDeletePageSuccess extends React.Component {
                         <img className="FotoPerfil" width="160" height="160" alt=""></img>
                         <h2 className="NombreUsuario">Fulanito Perez</h2>
                     </div>
-                    <div className="OpcionMenu">
-                        <h2 className="NombreMenu DatosPersonales">MODIFICAR DATOS</h2>
+
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/user-data" className="LinkInactivo DatosPersonales">Datos Personales</Link>
                     </div>
-                    <div className="OpcionMenu">
-                        <h2 className="NombreMenu CrearListas">CREAR LISTAS</h2>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/user-create-place" className="LinkInactivo CrearLugar">Crear Lugar</Link>
                     </div>
-                    <div className="OpcionMenu">
-                        <h2 className="NombreMenu VerListas">VER LISTAS</h2>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/user-list-places" className="LinkInactivo ListaLugares">Lista Lugares</Link>
                     </div>
-                    <div className="OpcionMenu">
-                        <h2 className="NombreMenu  Lugares">LUGARES</h2>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/user-create-route" className="LinkInactivo CrearRuta">Crear Ruta</Link>
                     </div>
-                    <div className="OpcionMenu">
-                        <h2 className="NombreMenu EliminarCuenta">ELIMINAR CUENTA</h2>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/user-list-routes" className="LinkInactivo ListaRuta">Lista Rutas</Link>
                     </div>
-                    <button onClick={this.handleClick} className="OpcionMenu">
-                        <h2 className="NombreMenu CerrarSesion">SALIR</h2>
-                    </button>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/user-delete" className="LinkActivo EliminarCuenta">Eliminar Cuenta</Link>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                    </div>
                 </div>
                 <div className="ObjetivoMenuLateral">
-                    <h1> ¿ ESTA SEGURO QUE DESEA ELIMINAR LA CUENTA ?</h1>
-
                     <div>
                         <label>CONTRASEÑA</label>
                         <br />
