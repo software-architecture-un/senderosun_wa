@@ -1,0 +1,133 @@
+.HomePage{
+    font-family: 'Russo One', sans-serif;
+    background: #2B303A;
+    min-width: 850px;
+    min-height: 1000; 
+    text-align: center;
+}
+
+.HeaderLandig{
+    padding-top:     30px;
+}
+
+.PosicionBotones{
+    text-align: end;
+}
+
+.BotonIniciarSesion{
+    margin: auto;
+    text-decoration: none;
+    background: #92DCE5;
+    color:      #2B303A;
+    padding:         15px;
+    border-radius:   20px;
+    margin-right:    20px;
+    border: 3px solid #EEE5E9;
+}
+
+.BotonIniciarSesion:hover{
+    text-decoration: none;
+    background: #92DCE5;
+    color:      #2B303A;
+}
+
+.BotonIniciarSesion:active{
+    text-decoration: none;
+    background: #D64933;
+    color:      #92DCE5;
+    border: 5px solid #EEE5E9;
+    transform:  scale(0.95);
+}
+
+
+.BotonCrearCuenta{
+    text-decoration: none;
+    background: #D64933;
+    color:      #92DCE5;
+    padding:         15px;
+    border-radius:   20px;
+    margin-right:    20px;
+    border: 3px solid #EEE5E9;
+}
+
+.BotonCrearCuenta:hover{
+    text-decoration: none;
+    background: #D64933;
+    color:      #92DCE5;
+}
+
+.BotonCrearCuenta:active{
+    text-decoration: none;
+    background: #92DCE5;
+    color:      #2B303A;
+    border: 5px solid #EEE5E9;
+    transform:  scale(0.95);
+}
+
+
+.TituloLanding{
+    font-family: 'Russo One', sans-serif;
+    color:      #D64933;
+    font-size:      1.5in;
+    margin: 40px 0px 40px 0px;
+}
+
+.BodyLandig{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0px 0px 40px 0px;
+    margin:  0px 0px 15px 0px;
+}
+
+
+.CajaGaleria, .CajaImagenes, .CajaActividades{
+    background: #92DCE5;
+    color:      #7C7C7C;
+    border: 7px solid #EEE5E9;
+    width:          450px;
+    height:         500px;
+    border-radius:   25px;
+    margin: 10px 20px 10px 20px;
+    flex-shrink: 0;
+    padding: 15px 15px 15px 15px;
+}
+
+.SubTitulos{
+    font-size: 0.5in;
+    margin: 20px 0px 0px 0px;
+    color: #2B303A;
+}
+
+.TextoJustificado{
+    text-align: centers;
+    font-size: 0.19in;
+}
+
+.ImagenActividades{
+    margin: 25px 25px 25px 25px;
+}
+
+.FooterLandig{
+    background: #EEE5E9;
+    color: #2B303A;
+    border: 10px solid #92DCE5;
+    padding: 10px 0px 10px 0px;
+    border-radius: 25px 25px 0px 0px;
+    margin: 0 10% 0 10%;
+}
+
+
+.CreadoresFooter{
+    font-size: 0.15in;
+}
+
+.Universidad{
+    color: #D64933;
+    margin: 0px 0px 5px 0px;
+}
+
+.Materia{
+    color: #2B303A;
+    margin: 5px 0px 0px 0px;
+}
