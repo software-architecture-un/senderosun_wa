@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserListPlacesPage extends React.Component {
+class UserListPlacesPageSuccess extends React.Component {
 
     render() {
         return (
@@ -11,4 +11,4 @@ class UserListPlacesPage extends React.Component {
     }
 }
 
-export default UserListPlacesPage;
+export default UserListPlacesPageSuccess;

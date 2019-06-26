@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserListRoutesPage extends React.Component {
+class UserListRoutesPageSuccess extends React.Component {
 
     render() {
         return (
@@ -11,4 +11,4 @@ class UserListRoutesPage extends React.Component {
     }
 }
 
-export default UserListRoutesPage;
+export default UserListRoutesPageSuccess;

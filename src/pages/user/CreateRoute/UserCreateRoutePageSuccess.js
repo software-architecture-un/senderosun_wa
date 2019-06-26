@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserCreateRoutePage extends React.Component {
+class UserCreateRoutePageSuccess extends React.Component {
 
     render() {
         return (
@@ -11,4 +11,4 @@ class UserCreateRoutePage extends React.Component {
     }
 }
 
-export default UserCreateRoutePage;
+export default UserCreateRoutePageSuccess;

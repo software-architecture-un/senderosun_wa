@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserCreatePlacePage extends React.Component {
+class UserCreatePlacePageSuccess extends React.Component {
 
     render() {
         return (
@@ -11,4 +11,4 @@ class UserCreatePlacePage extends React.Component {
     }
 }
 
-export default UserCreatePlacePage;
+export default UserCreatePlacePageSuccess;

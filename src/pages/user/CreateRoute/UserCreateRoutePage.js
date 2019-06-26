@@ -1,17 +1,11 @@
 import React from 'react';
-import ErrorPage from '../../components/Errors/ErrorPage';
-import IpGraphql from '../../components/conection/IpGraphql';
-import UserDataPageSuccess from './UserDataPageSuccess';
+import IpGraphql from '../../../components/conection/IpGraphql';
+import ErrorPage from '../../../components/Errors/ErrorPage';
+import UserCreateRoutePageSuccess from './UserCreateRoutePageSuccess';
 
-
-class UserDataPage extends React.Component {
+class UserCreateRoutePage extends React.Component {
 
     state = {
-        load: <ErrorPage />
-    }
-
-    componentDidMount() {
-        console.log("DID MOUNT")
     }
 
     componentWillMount() {
@@ -38,15 +32,18 @@ class UserDataPage extends React.Component {
                 if (res.data.verifyToken != null) {
                     this.setState({
                         status: res.data.verifyToken.status,
-                        load: <UserDataPageSuccess />,
+                        load: <UserCreateRoutePageSuccess />,
                     })
                     console.log(res.data.verifyToken.status)
+                } else {
+                    this.setState({
+                        load: <ErrorPage />,
+                    })
                 }
             })
             .catch(error => {
                 this.setState({ errors: error })
             }))
-        console.log("WILL MOUNT")
     }
 
     render() {
@@ -58,4 +55,4 @@ class UserDataPage extends React.Component {
     }
 }
 
-export default UserDataPage;
+export default UserCreateRoutePage;

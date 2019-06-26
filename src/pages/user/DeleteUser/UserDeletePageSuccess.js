@@ -1,11 +1,15 @@
 import React from 'react';
-import './UserDataPage.css';
 
-class UserDataPageSuccess extends React.Component {
+class UserDeletePageSuccess extends React.Component {
+
+    handleClick = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
+    }
+
     render() {
         return (
             < div className="UserDataPageSuccess" >
-                {console.log("CARGA EL TRUE")}
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
                         <img className="FotoPerfil" width="160" height="160" alt=""></img>
@@ -26,16 +30,33 @@ class UserDataPageSuccess extends React.Component {
                     <div className="OpcionMenu">
                         <h2 className="NombreMenu EliminarCuenta">ELIMINAR CUENTA</h2>
                     </div>
-                    <div className="OpcionMenu">
+                    <button onClick={this.handleClick} className="OpcionMenu">
                         <h2 className="NombreMenu CerrarSesion">SALIR</h2>
-                    </div>
+                    </button>
                 </div>
                 <div className="ObjetivoMenuLateral">
-                    <h1>CAMPOS</h1>
+                    <h1> ¿ ESTA SEGURO QUE DESEA ELIMINAR LA CUENTA ?</h1>
+
+                    <div>
+                        <label>CONTRASEÑA</label>
+                        <br />
+                        <input />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <label>CONTRASEÑA</label>
+                        <br />
+                        <input />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <button>ELIMINAR CUENTA</button>
                 </div>
             </div >
-        );
+        )
     }
 }
-
-export default UserDataPageSuccess;
+export default UserDeletePageSuccess;
