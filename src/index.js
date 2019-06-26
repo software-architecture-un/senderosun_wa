@@ -9,12 +9,13 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import GalleryPage from './pages/HomePage/GalleryPage';
 import ActivitiesPage from './pages/HomePage/ActivitiesPage';
 import RoutesPage from './pages/HomePage/RoutesPage';
-import UserCreatePlacePage from './pages/user/UserCreatePlacePage'
-import UserCreateRoutePage from './pages/user/UserCreateRoutePage'
-import UserDataPage from './pages/user/UserDataPage'
-import UserDeletePage from './pages/user/UserDeletePage'
-import UserListPlacesPage from './pages/user/UserListPlacesPage'
-import UserListRoutesPage from './pages/user/UserListRoutesPage'
+
+import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage'
+import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage'
+import UserDataPage from './pages/user/UserData/UserDataPage'
+import UserDeletePage from './pages/user/DeleteUser/UserDeletePage'
+import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
+import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
 
 ReactDOM.render(
     <BrowserRouter>
