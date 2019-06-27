@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import IpGraphql from '../../../components/conection/IpGraphql';
+// import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDeletePage.css';
 
 class UserDeletePageSuccess extends React.Component {
@@ -61,7 +61,9 @@ class UserDeletePageSuccess extends React.Component {
                         <Link to="/" className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
-                <div className="ObjetivoMenuLateral">
+                <div className="ObjetivoMenuLateralNuevo">
+
+                    <h1>¿Estas seguro de eliminar la cuenta?</h1>
                     <div>
                         <label>CONTRASEÑA</label>
                         <br />

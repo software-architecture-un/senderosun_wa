@@ -138,7 +138,7 @@ class UserCreateRoutePageSuccess extends React.Component {
                         <Link to="/" className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
-                <div className="ObjetivoMenuLateral">
+                <div className="ObjetivoMenuLateralNuevo">
                     <h1>Crear Una Nueva Ruta</h1>
 
                     <label>Nombre Ruta</label>
