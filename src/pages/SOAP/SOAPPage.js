@@ -37,7 +37,6 @@ class SOAPPage extends React.Component {
                     this.setState({
                         SalidaConsultaSOAP: res.data.getCountFiles.value
                     })
-                    // alert(`Se ha realizado la prueba de SOAP al grupo C => value: ${res.data.getCountFiles.value}`);
                     console.log(res.data.getCountFiles);
                 } else {
                     alert("Error: verificar campo ingresado");

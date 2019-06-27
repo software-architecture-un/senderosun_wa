@@ -16,9 +16,9 @@ import UserDataPage from './pages/user/UserData/UserDataPage'
 import UserDeletePage from './pages/user/DeleteUser/UserDeletePage'
 import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
 import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
-import PruebaSoap from './pages/soap/PruebaSoap'
+import PruebaSoap from './pages/SOAP/PruebaSoap'
 
-import SOAPPAge from './pages/soap/SOAPPage';
+import SOAPPAge from './pages/SOAP/SOAPPage';
 
 ReactDOM.render(
     <BrowserRouter style={{ background: 'red', }}>
