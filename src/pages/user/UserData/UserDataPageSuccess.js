@@ -35,6 +35,7 @@ class UserDataPageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 window.localStorage.setItem('user_id', res.data.userByEmail.content.id)
+                window.localStorage.setItem('user_id', res.data.userByEmail.content.name)
                 this.setState({
                     name: res.data.userByEmail.content.name,
                     age: res.data.userByEmail.content.age,
