@@ -21,7 +21,7 @@ import PruebaSoap from './pages/soap/PruebaSoap'
 import SOAPPAge from './pages/SOAP/SOAPPage';
 
 ReactDOM.render(
-    <BrowserRouter style={{ background: 'red', }}>
+    <BrowserRouter>
         {/* ======================================================== */}
         {/* PAGINAS DEL HOME */}
         <Route exact path='/' component={HomePage} />
@@ -41,7 +41,7 @@ ReactDOM.render(
         <Route exact path='/user-create-place' component={UserCreatePlacePage} />
         <Route exact path='/user-create-route' component={UserCreateRoutePage} />
         {/* ======================================================== */}
-        
+
         {/* ======================================================== */}
         {/* PAGINA PRUEBA SOAP */}
         <Route exact path='/prueba-soap' component={PruebaSoap} />
@@ -52,6 +52,7 @@ ReactDOM.render(
         {/* CONSUMIR EL SERVICIO SOAP EXPUESTO */}
         <Route exact path='/interface-files' component={SOAPPAge} />
         {/* ======================================================== */}
+    </BrowserRouter>,
     document.getElementById('root'));
 
 serviceWorker.unregister();
