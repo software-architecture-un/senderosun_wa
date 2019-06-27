@@ -18,8 +18,10 @@ import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
 import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
 import PruebaSoap from './pages/soap/PruebaSoap'
 
+import SOAPPAge from './pages/SOAP/SOAPPage';
+
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter style={{ background: 'red', }}>
         {/* ======================================================== */}
         {/* PAGINAS DEL HOME */}
         <Route exact path='/' component={HomePage} />
@@ -45,7 +47,11 @@ ReactDOM.render(
         <Route exact path='/prueba-soap' component={PruebaSoap} />
         {/* ======================================================== */}
 
-    </BrowserRouter>,
+
+        {/* ======================================================== */}
+        {/* CONSUMIR EL SERVICIO SOAP EXPUESTO */}
+        <Route exact path='/interface-files' component={SOAPPAge} />
+        {/* ======================================================== */}
     document.getElementById('root'));
 
 serviceWorker.unregister();

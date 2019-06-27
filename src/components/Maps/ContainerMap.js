@@ -6,9 +6,9 @@ class ContenedorMapa extends React.Component {
 
     render() {
         return (
-            <div className="ContenedorMapa">
+            <div className="ContenedorMapa" >
                 <h1>Lugar:</h1>
-                <h3>mi lugar</h3>
+                <h3>{this.props.nombrelugar}</h3>
                 <div>
                     <Mapas markers={this.props.markers} largo={this.props.largo} />
                 </div>

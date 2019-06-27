@@ -1,0 +1,106 @@
+ .SOAPPage {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    font-family: 'Russo One', sans-serif;
+}
+
+.ContenedorConsulta {
+    border: 5px solid #92DCE5;
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.TituloSAOP {
+    color: #D64933;
+    font-size: 70px
+}
+
+.LabelSOAP {
+    font-size: 30px;
+    color: #D64933;
+}
+
+
+.InputEntradaSOAP {
+    border-radius: 25px;
+    font-size: 30px;
+    width: 550px;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+}
+
+.InputSalidaSOAP {
+    border-radius: 25px;
+    font-size: 0px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+}
+
+
+.BotonConsultarSOAP{
+    margin: auto;
+    text-decoration: none;
+    background: #92DCE5;
+    color:      #2B303A;
+    padding:         0px;
+    border-radius:   20px;
+    margin-right:    20px;
+    border: 3px solid #EEE5E9;
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    font-family: 'Russo One', sans-serif;
+}
+
+.BotonConsultarSOAP:hover{
+    text-decoration: none;
+    background: #92DCE5;
+    color:      #2B303A;
+}
+
+.BotonConsultarSOAP:active{
+    text-decoration: none;
+    background: #D64933;
+    color:      #92DCE5;
+    border: 5px solid #EEE5E9;
+    transform:  scale(0.95);
+}
+
+
+.BotonRegresarSOAP{
+    margin: auto;
+    text-decoration: none;
+    background: #D64933;
+    color:      #92DCE5;
+    padding:         10px 0px 0px 0px;
+    border-radius:   20px;
+    margin-right:    20px;
+    border: 3px solid #EEE5E9;
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    font-family: 'Russo One', sans-serif;
+    margin: 0px 0px 0px 200px;
+    text-align: center;
+}
+
+.BotonRegresarSOAP:hover{
+    text-decoration: none;
+    background: #2B303A;
+    color:      #92DCE5;
+}
+
+.BotonRegresarSOAP:active{
+    text-decoration: none;
+    background: #92DCE5;
+    color:      #2B303A;
+    
+    border: 5px solid #EEE5E9;
+    transform:  scale(0.95);
+}
