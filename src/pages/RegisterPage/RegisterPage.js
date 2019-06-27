@@ -5,7 +5,11 @@ import DirectionGraphq from '../../components/conection/IpGraphql';
 class RegisterPage extends React.Component {
 
     state = {
-        // CampoEdad:0
+        CampoNombre: "",
+        CampoIdentificacion: "",
+        CampoEdad: "",
+        CampoEmail: "",
+        CampoPassword: ""
     }
 
     handleClick = e => {
@@ -13,7 +17,7 @@ class RegisterPage extends React.Component {
         console.log("=====================================================================")
         console.log("--> ESTO ES PARA REGISTRARSE")
 
-       
+
         const query = `
             mutation {
                 createUser(user: {
@@ -45,7 +49,26 @@ class RegisterPage extends React.Component {
 
         fetch(url, opts)
             .then(res => res.json())
-            .then(console.log)
+            .then(res => {
+                if (this.state.CampoNombre.length != 0 &
+                    this.state.CampoIdentificacion.length != 0 &
+                    this.state.CampoEdad.length != 0 &
+                    this.state.CampoEmail.length != 0 &
+                    this.state.CampoPassword.length != 0) {
+                    alert(`Se ha creado el usuario satisfactoriamente.`);
+                    this.setState({
+                        CampoNombre: "",
+                        CampoIdentificacion: "",
+                        CampoEdad: "",
+                        CampoEmail: "",
+                        CampoPassword: ""
+                    })
+                } else {
+                    alert(`No se admiten campos vacios.`);
+                }
+
+                console.log(res)
+            })
             .catch(console.error);
         console.log("=====================================================================\n\n")
 
@@ -82,7 +105,7 @@ class RegisterPage extends React.Component {
                         <br />
                         <label className="LabelRegistroEdad">Edad:</label>
                         <br />
-                        <input onChange={this.handleChange} name="CampoEdad" className="InputRegistroEdad"  value={this.state.CampoEdad} />
+                        <input onChange={this.handleChange} name="CampoEdad" className="InputRegistroEdad" value={this.state.CampoEdad} />
                         <br />
                         <br />
                         <label className="LabelRegistroGenero">Correo electrónico:</label>
@@ -91,21 +114,17 @@ class RegisterPage extends React.Component {
                         <br />
                         <label className="LabelRegistroPassword">Contraseña:</label>
                         <br />
-                        <input onChange={this.handleChange} name="CampoPassword" className="InputRegistroPassword"  value={this.state.CampoPassword} />
+                        <input onChange={this.handleChange} name="CampoPassword" className="InputRegistroPassword" value={this.state.CampoPassword} />
                         <br />
                         <br />
-                        <label className="LabelRegistroConfirmarPassword">Confirmar contraseña:</label>
-                        <br />
-                        <input onChange={this.handleChange} name="CampoConfirmarPassword" className="InputRegistroConfirmarPassword" value={this.state.CampoConfirmarPassword} />
-                        <br />
-                        <br />
+
 
                     </div>
 
-                        <div className="BotonesCrearVolver">
-                            <a onClick={this.handleClick}  href="/" className="BotonCrear">Crear Cuenta</a>
-                            <a className="BotonRegistroRegresar" href="/">Volver</a>
-                        </div>
+                    <div className="BotonesCrearVolver">
+                        <a onClick={this.handleClick} href="/" className="BotonCrear">Crear Cuenta</a>
+                        <a className="BotonRegistroRegresar" href="/">Volver</a>
+                    </div>
                 </div>
 
             </div>
