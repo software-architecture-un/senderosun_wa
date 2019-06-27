@@ -16,6 +16,7 @@ import UserDataPage from './pages/user/UserData/UserDataPage'
 import UserDeletePage from './pages/user/DeleteUser/UserDeletePage'
 import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
 import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
+import PruebaSoap from './pages/soap/PruebaSoap'
 
 ReactDOM.render(
     <BrowserRouter>
@@ -38,6 +39,12 @@ ReactDOM.render(
         <Route exact path='/user-create-place' component={UserCreatePlacePage} />
         <Route exact path='/user-create-route' component={UserCreateRoutePage} />
         {/* ======================================================== */}
+        
+        {/* ======================================================== */}
+        {/* PAGINA PRUEBA SOAP */}
+        <Route exact path='/prueba-soap' component={PruebaSoap} />
+        {/* ======================================================== */}
+
     </BrowserRouter>,
     document.getElementById('root'));
 
