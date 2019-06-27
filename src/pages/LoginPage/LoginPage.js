@@ -64,6 +64,8 @@ class LoginPage extends React.Component {
                     console.log(res)
                     window.location.href = '/user-data'
                 } else {
+                    console.log("MOSTRAR ERROR")
+                    console.log(res)
                     alert("Error: verificar el usuario y contraseña")
                     window.localStorage.clear()
                 }

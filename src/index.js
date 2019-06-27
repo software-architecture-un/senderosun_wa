@@ -18,7 +18,7 @@ import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
 import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
 import PruebaSoap from './pages/soap/PruebaSoap'
 
-import SOAPPAge from './pages/SOAP/SOAPPage';
+import SOAPPAge from './pages/soap/SOAPPage';
 
 ReactDOM.render(
     <BrowserRouter style={{ background: 'red', }}>

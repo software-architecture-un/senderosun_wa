@@ -104,3 +104,8 @@
     border: 5px solid #EEE5E9;
     transform:  scale(0.95);
 }
+
+.SalidaConsultaSOAP {
+    font-size: 30px;
+    color: #D64933;
+}
