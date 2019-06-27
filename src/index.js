@@ -21,7 +21,7 @@ import PruebaSoap from './pages/soap/PruebaSoap'
 import SOAPPAge from './pages/SOAP/SOAPPage';
 
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter style={{ background: 'red', }}>
         {/* ======================================================== */}
         {/* PAGINAS DEL HOME */}
         <Route exact path='/' component={HomePage} />
