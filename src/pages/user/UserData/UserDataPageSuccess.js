@@ -12,7 +12,7 @@ class UserDataPageSuccess extends React.Component {
     componentWillMount() {
         const query = `
             mutation {
-                userByEmail( email: { email: "${window.localStorage.email}" } ) {
+                userByEmail(email: { email: "${window.localStorage.email}" }){
                     content {
                         id
                         name
@@ -34,6 +34,7 @@ class UserDataPageSuccess extends React.Component {
         (fetch(url, opts)
             .then(res => res.json())
             .then(res => {
+                window.localStorage.setItem('user_id', res.data.userByEmail.content.id)
                 this.setState({
                     name: res.data.userByEmail.content.name,
                     age: res.data.userByEmail.content.age,
@@ -100,10 +101,11 @@ class UserDataPageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
-                <div className="ObjetivoMenuLateral">
+                <div className="ObjetivoMenuLateralNuevo">
+                    <br />
                     <h1>Datos Personales</h1>
                     <div>
                         <label>Id Usuario</label>

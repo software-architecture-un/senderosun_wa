@@ -155,7 +155,7 @@ class UserCreatePlacePageSuccess extends React.Component {
                     {/* <Link to="/" onClick={this.handleClickExit} className="OpcionMenu" >Salir</Link> */}
 
                 </div>
-                <div className="ObjetivoMenuLateral">
+                <div className="ObjetivoMenuLateralNuevo">
                     <h1>CREAR UN NUEVO LUGAR</h1>
                     <label>Nombre del lugar</label>
                     <input onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css';
-import Camara from '../../images/camara.png';
+import Archivo from '../../images/archivo.png';
 import Ruta from '../../images/rutas.png';
 import Actividad from '../../images/actividad.png';
 import { Link } from 'react-router-dom';
@@ -21,13 +21,12 @@ class HomePage extends React.Component {
 
                 <div className="BodyLandig">
                     <div className="CajaGaleria">
-                        <h2 className="SubTitulos">Galeria De Fotos</h2>
-                        <a href="/gallery">
-                            <img src={Camara} width="250" height="250" alt="Imagen_Camara"></img>
+                        <h2 className="SubTitulos">INTERFACE (files)</h2>
+                        <a href="/interface-files">
+                            <img src={Archivo} width="250" height="250" alt="Imagen_Camara"></img>
                         </a>
                         <div className="TextoJustificado">
-                            <p>En nuestra galeria podras las fotos que mas les han gustado a nuestros usuarios.</p>
-                            <p>Muestranos como ves el mundo.</p>
+                            <p>En este servicio a partir del nombre de un usuario se obtiene el número de archivos que tiene el usuario.</p>
                         </div>
                     </div>
 

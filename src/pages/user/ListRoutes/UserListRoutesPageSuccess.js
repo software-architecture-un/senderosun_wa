@@ -55,7 +55,7 @@ class UserListRoutesPageSuccess extends React.Component {
                         <Link to="/" className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
-                <div className="ObjetivoMenuLateral">
+                <div className="ObjetivoMenuLateralNuevo">
                     <h1>CAMPOS</h1>
 
                 </div>
