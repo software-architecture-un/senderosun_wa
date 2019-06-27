@@ -3,6 +3,7 @@ import IpGraphql from '../../../components/conection/IpGraphql';
 import { Link } from 'react-router-dom';
 import './UserListPlacesPage.css';
 import ContainerMap from '../../../components/Maps/ContainerMap';
+import ImagenUser from '../../../images/user.png';
 
 
 class UserListPlacesPageSuccess extends React.Component {
@@ -13,22 +14,22 @@ class UserListPlacesPageSuccess extends React.Component {
         lugares: [],
         pintarLugares: [],
 
-        misRutas: [[{ latitude: 25.8103146, longitude: -80.1751609 },
-        { latitude: 25.8103146, longitude: -80.1751609 }], [{ latitude: 25.8103146, longitude: -80.1751609 },
-        { latitude: 27.9947147, longitude: -82.5943645 },
-        { latitude: 28.4813018, longitude: -81.4387899 }], [{ latitude: 25.8103146, longitude: -80.1751609 },
-        { latitude: 27.9947147, longitude: -82.5943645 }],
-        [{ latitude: 4.570315, longitude: -74.135717 }, { latitude: 4.634018, longitude: -74.082195 }],
-        [{ latitude: 4.570315, longitude: -74.135717 }, { latitude: 4.570315, longitude: -74.135717 }]],
+        // misRutas: [[{ latitude: 25.8103146, longitude: -80.1751609 },
+        // { latitude: 25.8103146, longitude: -80.1751609 }], [{ latitude: 25.8103146, longitude: -80.1751609 },
+        // { latitude: 27.9947147, longitude: -82.5943645 },
+        // { latitude: 28.4813018, longitude: -81.4387899 }], [{ latitude: 25.8103146, longitude: -80.1751609 },
+        // { latitude: 27.9947147, longitude: -82.5943645 }],
+        // [{ latitude: 4.570315, longitude: -74.135717 }, { latitude: 4.634018, longitude: -74.082195 }],
+        // [{ latitude: 4.570315, longitude: -74.135717 }, { latitude: 4.570315, longitude: -74.135717 }]],
 
-        nuevasRutas: [[{ latitude: 4.570315, longitude: -74.135717 }, { latitude: 4.570315, longitude: -74.135717 }],
-        [{ latitude: 4.634018, longitude: -74.082195 }, { latitude: 4.634018, longitude: -74.082195 }],
-        [{ latitude: 4.635476, longitude: -74.062101 }, { latitude: 4.635476, longitude: -74.062101 }],
-        [{ latitude: 4.645109, longitude: -74.078389 }, { latitude: 4.645109, longitude: -74.078389 }],
-        [{ latitude: 4.624608, longitude: -74.06606 }, { latitude: 4.624608, longitude: -74.06606 }],
-        [{ latitude: 4.61832, longitude: -74.063195 }, { latitude: 4.61832, longitude: -74.063195 }],
-        [{ latitude: 4.614055, longitude: -74.063864 }, { latitude: 4.614055, longitude: -74.063864 }],
-        [{ latitude: 4.644774, longitude: -74.063775 }, { latitude: 4.644774, longitude: -74.063775 }]]
+        // nuevasRutas: [[{ latitude: 4.570315, longitude: -74.135717 }, { latitude: 4.570315, longitude: -74.135717 }],
+        // [{ latitude: 4.634018, longitude: -74.082195 }, { latitude: 4.634018, longitude: -74.082195 }],
+        // [{ latitude: 4.635476, longitude: -74.062101 }, { latitude: 4.635476, longitude: -74.062101 }],
+        // [{ latitude: 4.645109, longitude: -74.078389 }, { latitude: 4.645109, longitude: -74.078389 }],
+        // [{ latitude: 4.624608, longitude: -74.06606 }, { latitude: 4.624608, longitude: -74.06606 }],
+        // [{ latitude: 4.61832, longitude: -74.063195 }, { latitude: 4.61832, longitude: -74.063195 }],
+        // [{ latitude: 4.614055, longitude: -74.063864 }, { latitude: 4.614055, longitude: -74.063864 }],
+        // [{ latitude: 4.644774, longitude: -74.063775 }, { latitude: 4.644774, longitude: -74.063775 }]]
 
         // nuevasRutas: [[{ latitude: 1, longitude: 1.1111 }, { latitude: 1, longitude: 1.1111 }],
         // [{ latitude: 1, longitude: 1.1111 }, { latitude: 1, longitude: 1.1111 }],
@@ -71,20 +72,16 @@ class UserListPlacesPageSuccess extends React.Component {
                 this.setState({
                     lugares: res.data.scoreresourceByuser
                 })
+                console.log("===============================================")
                 console.log("este es el valor del estado actual")
                 console.log(this.state.lugares)
-                console.log(this.state.misRutas)
+                console.log("===============================================")
+
             })
             .then(res => {
-                console.log("-->" + res)
                 const CargarLugares = this.state.lugares.map(lugar => {
-
-                    return ([{ latitude: lugar.latitude, longitude: lugar.longitude }, { latitude: lugar.latitude, longitude: lugar.longitude }])
-                    // return (lugar.name + " ---> (" + lugar.latitude + " :: " + lugar.longitude + " )\n\n")
+                    return ({ name: lugar.name, coordenada: [{ latitude: lugar.latitude, longitude: lugar.longitude }, { latitude: lugar.latitude, longitude: lugar.longitude }] })
                 })
-                console.log("======================================")
-                console.log(CargarLugares)
-                console.log("======================================")
                 this.setState({
                     pintarLugares: CargarLugares
                 })
@@ -94,10 +91,10 @@ class UserListPlacesPageSuccess extends React.Component {
 
     render() {
 
-        const ListaRutas = this.state.nuevasRutas.map((ruta) => {
+        const ListaRutas = this.state.pintarLugares.map((ruta) => {
             return (
                 <div>
-                    <ContainerMap markers={ruta} nombrelugar="{ruta.name}" />
+                    <ContainerMap markers={ruta.coordenada} nombrelugar={ruta.name} />
                 </div>
             )
         })
@@ -106,8 +103,8 @@ class UserListPlacesPageSuccess extends React.Component {
             < div className="UserListPlacesPageSuccess" >
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
+                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
+                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
                     </div>
 
                     <br />

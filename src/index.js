@@ -10,13 +10,12 @@ import GalleryPage from './pages/HomePage/GalleryPage';
 import ActivitiesPage from './pages/HomePage/ActivitiesPage';
 import RoutesPage from './pages/HomePage/RoutesPage';
 
-import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage'
-import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage'
-import UserDataPage from './pages/user/UserData/UserDataPage'
-import UserDeletePage from './pages/user/DeleteUser/UserDeletePage'
-import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
-import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
-import PruebaSoap from './pages/SOAP/PruebaSoap'
+import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage';
+import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage';
+import UserDataPage from './pages/user/UserData/UserDataPage';
+import UserDeletePage from './pages/user/DeleteUser/UserDeletePage';
+import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage';
+import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage';
 
 import SOAPPAge from './pages/SOAP/SOAPPage';
 
@@ -40,11 +39,6 @@ ReactDOM.render(
         <Route exact path='/user-list-routes' component={UserListRoutesPage} />
         <Route exact path='/user-create-place' component={UserCreatePlacePage} />
         <Route exact path='/user-create-route' component={UserCreateRoutePage} />
-        {/* ======================================================== */}
-
-        {/* ======================================================== */}
-        {/* PAGINA PRUEBA SOAP */}
-        <Route exact path='/prueba-soap' component={PruebaSoap} />
         {/* ======================================================== */}
 
 

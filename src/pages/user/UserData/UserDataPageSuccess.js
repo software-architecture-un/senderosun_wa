@@ -2,6 +2,7 @@ import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDataPage.css';
 import { Link } from 'react-router-dom';
+import ImagenUser from '../../../images/user.png';
 
 class UserDataPageSuccess extends React.Component {
 
@@ -35,7 +36,7 @@ class UserDataPageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 window.localStorage.setItem('user_id', res.data.userByEmail.content.id)
-                window.localStorage.setItem('user_id', res.data.userByEmail.content.name)
+                window.localStorage.setItem('name', res.data.userByEmail.content.name)
                 this.setState({
                     name: res.data.userByEmail.content.name,
                     age: res.data.userByEmail.content.age,
@@ -59,8 +60,8 @@ class UserDataPageSuccess extends React.Component {
             < div className="UserDataPageSuccess" >
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
+                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
+                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
                     </div>
 
                     <br />
@@ -105,32 +106,43 @@ class UserDataPageSuccess extends React.Component {
                         <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
+
                 <div className="ObjetivoMenuLateralNuevo">
+                    <div className="TituloTarget">
+                        <h1>Datos Personales</h1>
+                    </div>
                     <br />
-                    <h1>Datos Personales</h1>
+                    <br />
+                    <br />
+
                     <div>
-                        <label>Id Usuario</label>
-                        <input value={this.state.id} />
+                        <label className="LabelUserData">Id Usuario:</label>
+                        <br />
+                        <input className="InputUserData" value={this.state.id} disabled />
                     </div>
                     <br />
                     <div>
-                        <label>Nombre</label>
-                        <input value={this.state.name} />
+                        <label className="LabelUserData">Nombre:</label>
+                        <br />
+                        <input className="InputUserData" value={this.state.name} disabled />
                     </div>
                     <br />
                     <div>
-                        <label>Documento</label>
-                        <input value={this.state.document} />
+                        <label className="LabelUserData">Documento:</label>
+                        <br />
+                        <input className="InputUserData" value={this.state.document} disabled />
                     </div>
                     <br />
                     <div>
-                        <label>Age</label>
-                        <input value={this.state.age} />
+                        <label className="LabelUserData">Age:</label>
+                        <br />
+                        <input className="InputUserData" value={this.state.age} disabled />
                     </div>
                     <br />
                     <div>
-                        <label>Correo</label>
-                        <input value={this.state.email} />
+                        <label className="LabelUserData">Correo:</label>
+                        <br />
+                        <input className="InputUserData" value={this.state.email} disabled />
                     </div>
                 </div>
             </div >

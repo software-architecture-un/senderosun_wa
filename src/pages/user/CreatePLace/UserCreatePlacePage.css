@@ -70,3 +70,34 @@
     width: 108000px;
     height: 580px;
 }
+
+.BotonCrearLugar {
+
+}
+
+
+.BotonCrearLugar{
+    font-family: 'Russo One', sans-serif;
+    border-radius: 20px 20px 20px 20px;
+    font-size: 30px;
+    border: 5px solid #EEE5E9;
+    padding: 0px 0px 0px 0px;
+    margin: 10px 0px 10px 0px;
+    background: #2B303A;
+    color: #92DCE5;
+    width: 250px;
+    height: 80px;
+}
+
+.BotonCrearLugar:hover{
+    border: 5px solid #D64933;
+    background: #92DCE5;
+    color:      #2B303A;
+}
+
+.BotonCrearLugar:active{
+    background: #D64933;
+    color:      #92DCE5;
+    border: 5px solid #EEE5E9;
+    transform:  scale(0.95);
+}
