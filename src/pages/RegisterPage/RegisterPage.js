@@ -50,11 +50,11 @@ class RegisterPage extends React.Component {
         fetch(url, opts)
             .then(res => res.json())
             .then(res => {
-                if (this.state.CampoNombre.length != 0 &
-                    this.state.CampoIdentificacion.length != 0 &
-                    this.state.CampoEdad.length != 0 &
-                    this.state.CampoEmail.length != 0 &
-                    this.state.CampoPassword.length != 0) {
+                if (this.state.CampoNombre.length !== 0 &
+                    this.state.CampoIdentificacion.length !== 0 &
+                    this.state.CampoEdad.length !== 0 &
+                    this.state.CampoEmail.length !== 0 &
+                    this.state.CampoPassword.length !== 0) {
                     alert(`Se ha creado el usuario satisfactoriamente.`);
                     this.setState({
                         CampoNombre: "",

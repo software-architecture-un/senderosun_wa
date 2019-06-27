@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserListRoutesPage.css';
 import { Link } from 'react-router-dom';
+import ImagenUser from '../../../images/user.png';
 
 class UserListRoutesPageSuccess extends React.Component {
 
@@ -9,8 +10,8 @@ class UserListRoutesPageSuccess extends React.Component {
             < div className="UserListRoutesPageSuccess" >
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
+                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
+                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
                     </div>
 
                     <br />

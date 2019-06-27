@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 class UserCreatePlacePageSuccess extends React.Component {
 
     state = {
-        // CampoNombre,
-        // CampoDescripcion,
-        // CampoLatitud,
-        // CampoLongitud
+        CampoNombre: "",
+        CampoDescripcion: "",
+        CampoLatitud: "",
+        CampoLongitud: ""
     }
 
     componentWillMount() {
@@ -156,25 +156,31 @@ class UserCreatePlacePageSuccess extends React.Component {
 
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">
-                    <h1>CREAR UN NUEVO LUGAR</h1>
-                    <label>Nombre del lugar</label>
-                    <input onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
+                    <div className="TituloTarget">
+                        <h1>CREAR UN NUEVO LUGAR</h1>
+                    </div>
+                    <label className="LabelUserData">Nombre del lugar</label>
+                    <br />
+                    <input className="InputUserData" onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
                     <br />
                     <br />
-                    <label>Descripción</label>
-                    <input onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
+                    <label className="LabelUserData">Descripción</label>
+                    <br />
+                    <input className="InputUserData" onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
                     <br />
                     <br />
-                    <label>Latitud</label>
-                    <input onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
+                    <label className="LabelUserData">Latitud</label>
+                    <br />
+                    <input className="InputUserData" onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
                     <br />
                     <br />
-                    <label>Longitud</label>
-                    <input onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
+                    <label className="LabelUserData">Longitud</label>
+                    <br />
+                    <input className="InputUserData" onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
                     <br />
                     <br />
                     <div>
-                        <button onClick={this.handleClick}>Crear Lugar</button>
+                        <button className="BotonCrearLugar" onClick={this.handleClick}>Crear Lugar</button>
                     </div>
                 </div>
             </div >
