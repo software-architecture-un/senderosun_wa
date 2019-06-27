@@ -2,7 +2,6 @@ import React from 'react';
 import './HomePage.css';
 import Archivo from '../../images/archivo.png';
 import Ruta from '../../images/rutas.png';
-import Actividad from '../../images/actividad.png';
 import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
@@ -40,17 +39,6 @@ class HomePage extends React.Component {
                             <p>Camina, conduce y descubre los caminos que el mundo tiene preparado para ti-</p>
                         </div>
 
-                    </div>
-
-                    <div className="CajaActividades">
-                        <h2 className="SubTitulos">Actividades</h2>
-                        <a href="/activities">
-                            <img className="ImagenActividades" src={Actividad} width="200" height="200" alt="Imagen_Ruta" ></img>
-                        </a>
-                        <div className="TextoJustificado">
-                            <p>Comparte en familia y con amigos de miles de actividades que estan esperando por ti.</p>
-                            <p>Cambia tu rutina ven y descubre lo que tenemos preparado para ti.</p>
-                        </div>
                     </div>
                 </div>
 
