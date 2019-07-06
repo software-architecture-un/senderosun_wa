@@ -3,8 +3,6 @@ import Map from './Map';
 
 class Mapas extends React.Component {
 
-
-
     state = {
         googleMapsApiKey: "AIzaSyCOJZ-oU1uV5KmoxNS9zWBr2emcUZWjXUc",
     }
