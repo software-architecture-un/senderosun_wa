@@ -22,7 +22,6 @@ const MapaLugar = compose(
     <GoogleMap defaultZoom={16} defaultCenter={{ lat: props.latitud, lng: props.longitud }}>
         {props.isMarkerShown && (
             <Marker position={{ lat: props.latitud, lng: props.longitud }} />
-            // && <Marker position={{ lat: 4.622366, lng: -74.136348 }} />
         )}
     </GoogleMap>
 ));
