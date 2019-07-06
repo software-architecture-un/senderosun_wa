@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDeletePage.css';
+import '../../../GeneralStyles.css';
+import ImagenUser from '../../../images/user.png';
 
 class UserDeletePageSuccess extends React.Component {
 
@@ -15,8 +17,8 @@ class UserDeletePageSuccess extends React.Component {
             < div className="UserDataPageSuccess" >
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
+                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
+                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
                     </div>
 
                     <br />
@@ -34,7 +36,7 @@ class UserDeletePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/user-list-places" className="LinkInactivo ListaLugares">Lista Lugares</Link>
+                        <Link to="/user-list-places" className="LinkInactivo Lugares">Lugares</Link>
                     </div>
                     <br />
                     <br />
@@ -46,7 +48,7 @@ class UserDeletePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/user-list-routes" className="LinkInactivo ListaRuta">Lista Rutas</Link>
+                        <Link to="/user-list-routes" className="LinkInactivo Rutas">Rutas</Link>
                     </div>
                     <br />
                     <br />
@@ -63,24 +65,26 @@ class UserDeletePageSuccess extends React.Component {
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">
 
-                    <h1>¿Estas seguro de eliminar la cuenta?</h1>
-                    <div>
-                        <label>CONTRASEÑA</label>
-                        <br />
-                        <input />
+                    <div className="TituloTarget">
+                        <h1>¿Estas seguro de eliminar la cuenta?</h1>
                     </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <label>CONTRASEÑA</label>
-                        <br />
-                        <input />
+
+                    <div className="ContenedorLabelsData">
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Pass:</label>
+                            </div>
+                            <input className="InputUserData" />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Conf pass:</label>
+                            </div>
+                            <input className="InputUserData" />
+                        </div>
                     </div>
-                    <br />
-                    <br />
-                    <br />
-                    <button>ELIMINAR CUENTA</button>
+                    <button className="BotonEliminarCuenta">ELIMINAR CUENTA</button>
                 </div>
             </div >
         )

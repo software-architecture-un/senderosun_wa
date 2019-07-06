@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
@@ -16,6 +16,8 @@ import UserDataPage from './pages/user/UserData/UserDataPage';
 import UserDeletePage from './pages/user/DeleteUser/UserDeletePage';
 import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage';
 import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage';
+
+import MapaLugar from './components/Maps/MapaPrueba';
 
 import SOAPPAge from './pages/SOAP/SOAPPage';
 
@@ -41,6 +43,7 @@ ReactDOM.render(
         <Route exact path='/user-create-route' component={UserCreateRoutePage} />
         {/* ======================================================== */}
 
+        <Route exact path='/mapa-lugar' component={MapaLugar} />
 
         {/* ======================================================== */}
         {/* CONSUMIR EL SERVICIO SOAP EXPUESTO */}
@@ -48,5 +51,3 @@ ReactDOM.render(
         {/* ======================================================== */}
     </BrowserRouter>,
     document.getElementById('root'));
-
-serviceWorker.unregister();

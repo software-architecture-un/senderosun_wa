@@ -1,6 +1,7 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDataPage.css';
+import '../../../GeneralStyles.css';
 import { Link } from 'react-router-dom';
 import ImagenUser from '../../../images/user.png';
 
@@ -79,7 +80,7 @@ class UserDataPageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/user-list-places" className="LinkInactivo ListaLugares">Lista Lugares</Link>
+                        <Link to="/user-list-places" className="LinkInactivo Lugares">Lugares</Link>
                     </div>
                     <br />
                     <br />
@@ -91,7 +92,7 @@ class UserDataPageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/user-list-routes" className="LinkInactivo ListaRuta">Lista Rutas</Link>
+                        <Link to="/user-list-routes" className="LinkInactivo Rutas">Rutas</Link>
                     </div>
                     <br />
                     <br />
@@ -111,39 +112,45 @@ class UserDataPageSuccess extends React.Component {
                     <div className="TituloTarget">
                         <h1>Datos Personales</h1>
                     </div>
-                    <br />
-                    <br />
-                    <br />
 
-                    <div>
-                        <label className="LabelUserData">Id Usuario:</label>
-                        <br />
-                        <input className="InputUserData" value={this.state.id} disabled />
+                    {/* <div className="ContenedorDatosPersonales"> */}
+                    <div className="ContenedorLabelsData">
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Id Usuario:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.id} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Nombre:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.name} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Documento:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.document} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Age:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.age} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label> Correo:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.email} disabled />
+                        </div>
                     </div>
-                    <br />
-                    <div>
-                        <label className="LabelUserData">Nombre:</label>
-                        <br />
-                        <input className="InputUserData" value={this.state.name} disabled />
-                    </div>
-                    <br />
-                    <div>
-                        <label className="LabelUserData">Documento:</label>
-                        <br />
-                        <input className="InputUserData" value={this.state.document} disabled />
-                    </div>
-                    <br />
-                    <div>
-                        <label className="LabelUserData">Age:</label>
-                        <br />
-                        <input className="InputUserData" value={this.state.age} disabled />
-                    </div>
-                    <br />
-                    <div>
-                        <label className="LabelUserData">Correo:</label>
-                        <br />
-                        <input className="InputUserData" value={this.state.email} disabled />
-                    </div>
+                    {/* </div> */}
                 </div>
             </div >
         );
