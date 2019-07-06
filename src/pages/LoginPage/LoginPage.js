@@ -71,7 +71,7 @@ class LoginPage extends React.Component {
                 }
             })
             .catch(console.log("DATOS INCORRECTOS"))
-        // e.preventDefault()
+        e.preventDefault()
     }
 
     render() {
@@ -87,7 +87,7 @@ class LoginPage extends React.Component {
                         <input name="CampoPassword" onChange={this.handleChange} className="InputPassword" value={this.state.CampoPassword}  ></input>
                     </div>
                     <div className="BotonesEntrarVolver">
-                        <Link onClick={this.handleClick} className="BotonEntrar">Entrar</Link>
+                        <Link to="/user" onClick={this.handleClick} className="BotonEntrar">Entrar</Link>
                         <Link to="/" onClick={this.handleProbar} className="BotonRegresar" >Regresar</Link>
                     </div>
                 </div>

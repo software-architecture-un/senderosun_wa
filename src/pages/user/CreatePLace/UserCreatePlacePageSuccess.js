@@ -1,6 +1,8 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserCreatePlacePage.css';
+import '../../../GeneralStyles.css';
+import ImagenUser from '../../../images/user.png';
 import { Link } from 'react-router-dom';
 
 class UserCreatePlacePageSuccess extends React.Component {
@@ -105,10 +107,10 @@ class UserCreatePlacePageSuccess extends React.Component {
     render() {
         return (
             < div className="UserCreatePlacePageSuccess" >
-                <div className="BarraMenuLateral">
+                <div className="BarraLateral">
                     <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
+                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
+                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
                     </div>
                     <br />
                     <br />
@@ -125,7 +127,7 @@ class UserCreatePlacePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/user-list-places" className="LinkInactivo ListaLugares">Lista Lugares</Link>
+                        <Link to="/user-list-places" className="LinkInactivo Lugares">Lugares</Link>
                     </div>
                     <br />
                     <br />
@@ -137,7 +139,7 @@ class UserCreatePlacePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/user-list-routes" className="LinkInactivo ListaRuta">Lista Rutas</Link>
+                        <Link to="/user-list-routes" className="LinkInactivo Rutas">Rutas</Link>
                     </div>
                     <br />
                     <br />
@@ -149,36 +151,48 @@ class UserCreatePlacePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
                     </div>
-
-                    {/* <Link to="/" onClick={this.handleClickExit} className="OpcionMenu" >Salir</Link> */}
 
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">
                     <div className="TituloTarget">
-                        <h1>CREAR UN NUEVO LUGAR</h1>
+                        <h1>Crea Un Nuevo Lugar</h1>
                     </div>
-                    <label className="LabelUserData">Nombre del lugar</label>
-                    <br />
-                    <input className="InputUserData" onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
-                    <br />
-                    <br />
-                    <label className="LabelUserData">Descripción</label>
-                    <br />
-                    <input className="InputUserData" onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
-                    <br />
-                    <br />
-                    <label className="LabelUserData">Latitud</label>
-                    <br />
-                    <input className="InputUserData" onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
-                    <br />
-                    <br />
-                    <label className="LabelUserData">Longitud</label>
-                    <br />
-                    <input className="InputUserData" onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
-                    <br />
-                    <br />
+
+
+                    <div className="ContenedorCrearLugar">
+                        <div className="ContenedorLabelsData">
+                            <div className="OrdenarInformacion">
+                                <div className="LabelUserData">
+                                    <label >Lugar:</label>
+                                </div>
+                                <input className="InputUserData" onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
+                            </div>
+
+                            <div className="OrdenarInformacion">
+                                <div className="LabelUserData">
+                                    <label>Descripción:</label>
+                                </div>
+                                <input className="InputUserData" onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
+                            </div>
+
+                            <div className="OrdenarInformacion">
+                                <div className="LabelUserData">
+                                    <label>Latitud:</label>
+                                </div>
+                                <input className="InputUserData" onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
+                            </div>
+
+                            <div className="OrdenarInformacion">
+                                <div className="LabelUserData">
+                                    <label>Longitud:</label>
+                                </div>
+                                <input className="InputUserData" onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
+                            </div>
+                        </div>
+                    </div>
+
                     <div>
                         <button className="BotonCrearLugar" onClick={this.handleClick}>Crear Lugar</button>
                     </div>
