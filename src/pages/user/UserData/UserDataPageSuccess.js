@@ -4,6 +4,7 @@ import './UserDataPage.css';
 import '../../../GeneralStyles.css';
 import { Link } from 'react-router-dom';
 import ImagenUser from '../../../images/user.png';
+import { Permisos } from '../../../components/firebase/push-notification';
 
 class UserDataPageSuccess extends React.Component {
 
@@ -11,7 +12,10 @@ class UserDataPageSuccess extends React.Component {
 
     }
 
-    componentWillMount() {
+    componentWillMount() {  
+        console.log('empieza permiso')      
+        this.cargarPermiso()
+        console.log('termina permiso')
         const query = `
             mutation {
                 userByEmail(email: { email: "${window.localStorage.email}" }){
@@ -44,11 +48,21 @@ class UserDataPageSuccess extends React.Component {
                     document: res.data.userByEmail.content.document,
                     email: res.data.userByEmail.content.email,
                     id: res.data.userByEmail.content.id,
-                })
+                })            
             })
             .catch(error => {
                 this.setState({ errors: error })
             }))
+    }
+
+    cargarPermiso = () => {
+        console.log("jhon jairo")
+        console.log("jhon jairo")
+        console.log("jhon jairo")
+        console.log("jhon jairo")
+        console.log("jhon jairo") 
+        Permisos()   
+
     }
 
     handleClick = e => {
@@ -56,9 +70,11 @@ class UserDataPageSuccess extends React.Component {
         window.location.href = '/'
     }
 
-    render() {
+    render() {        
         return (
-            < div className="UserDataPageSuccess" >
+            < div className="UserDataPageSuccess">
+                {/* {this.cargarPermiso()} */}
+                {/* {Permisos()} */}
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
                         <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
@@ -151,7 +167,7 @@ class UserDataPageSuccess extends React.Component {
                         </div>
                     </div>
                     {/* </div> */}
-                </div>
+                </div>                
             </div >
         );
     }
