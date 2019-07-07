@@ -2,7 +2,7 @@ import firebase from 'firebase';
 
 export const initializeFirebase = () => {
   firebase.initializeApp({
-    messagingSenderId: "753713537723"
+    messagingSenderId: "980127576035"
   });
 }
 export const Permisos = async () => {
@@ -17,7 +17,7 @@ export const Permisos = async () => {
     const url =`https://iid.googleapis.com/iid/v1/${token}/rel/topics/senderos`;
     const opts = {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "key=AAAAr3zT4rs:APA91bHhQfQloKGMLyCys0mNeyZuJES29r1Zxvrc9A9LyUNoeRhpaS3MmDMgcAQrzhtrI3XGeqFXe8pbkKR9XhYL0A24ZcRxdSrWvfikcpFJhoSW9MVusopILI3CgyQKxX6wGj2dc-xA"}              
+        headers: { "Content-Type": "application/json", "Authorization": "key=AAAA5DQn7-M:APA91bHq8UzsCvz8z-2nwVi8PgwDQEFgBQYqJLtzRsy1oz7bqFWYi83YjKiaBTXAMpn4CjUwII5YpQv9mVwG9gV6hrd5V3Q9-UGYbc39o_AfU-9YeFoyHqa1aeenhK7X68QTbHpypMjg"}              
     };
 
     console.log(url);
