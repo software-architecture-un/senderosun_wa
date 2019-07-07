@@ -48,26 +48,33 @@ class UserCreatePlacePageSuccess extends React.Component {
 
     handleClickExit = e => {
         window.localStorage.clear()
-        // window.location.href = '/'
+        window.location.href = '/'
     }
 
 
     handleClick = e => {
         const query = `
+         
           mutation {
-            createScoreResource(scoreresource: {
-              name: "${this.state.CampoNombre}"
-              description: "${this.state.CampoDescripcion}"
-              latitude: ${this.state.CampoLatitud}
-              longitude: ${this.state.CampoLongitud}
-              user_id: ${this.state.user_id}
-            }) {
-              _id
-              name
-              description
-              latitude
-              longitude
-              user_id
+            createScoreResource(
+              scoreresource: {
+                name: "${this.state.CampoNombre}"
+                description: "${this.state.CampoDescripcion}"
+                latitude: ${this.state.CampoLatitud}
+                longitude: ${this.state.CampoLongitud}
+                user_id: ${this.state.user_id}
+              }
+            ) {
+              content {
+                _id
+                name
+                description
+                latitude
+                longitude
+                user_id
+              }
+              message
+              status
             }
           }
       `;
@@ -83,7 +90,8 @@ class UserCreatePlacePageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 if (this.state.CampoNombre.length !== 0 & this.state.CampoDescripcion.length !== 0 & this.state.CampoLatitud.length !== 0 & this.state.CampoLongitud.length !== 0) {
-                    alert(`Se ha creado el lugar con id = ${res.data.createScoreResource._id}`);
+
+                    alert(`Se ha creado el lugar con id = ${res.data.createScoreResource.content._id}`);
                     this.setState({
                         CampoNombre: "",
                         CampoDescripcion: "",
@@ -151,7 +159,7 @@ class UserCreatePlacePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClickExit} className="LinkInactivo Salir">Salir</Link>
                     </div>
 
                 </div>

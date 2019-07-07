@@ -7,11 +7,11 @@ import ImagenUser from '../../../images/user.png';
 
 class UserDeletePageSuccess extends React.Component {
 
-    handleClick = e => {
+
+    handleClickExit = e => {
         window.localStorage.clear()
         window.location.href = '/'
     }
-
     render() {
         return (
             < div className="UserDataPageSuccess" >
@@ -60,7 +60,7 @@ class UserDeletePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClickExit} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">

@@ -4,91 +4,117 @@ import IpGraphql from '../../../components/conection/IpGraphql';
 import '../../../GeneralStyles.css';
 import { Link } from 'react-router-dom';
 import ImagenUser from '../../../images/user.png';
+import ContainerRuta from '../../../components/Maps/ContainerRuta';
 
 class UserListRoutesPageSuccess extends React.Component {
 
 
     state = {
-
+        lugares: [],
+        cargarMisRutas: []
     }
 
-    CargarLugares() {
+    extraerCoordenada(lugar_id) {
+        const coordenada = {}
+        for (let index = 0; index < this.state.lugares.length; index++) {
+            if (this.state.lugares[index]._id === lugar_id) {
 
-        const query = `
-            query {
-                scoreresourceByuser(user_id: 1){
-                    _id
-                    latitude
-                    longitude
+                // { latitude: 25.8103146, longitude: -80.1751609 }
+                return {
+                    nombreLugar: this.state.lugares[index].name, coordenada: { latitude: this.state.lugares[index].latitude, longitude: this.state.lugares[index].longitude }
                 }
             }
-            `;
-
-        const url = IpGraphql;
-        const opts = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ query })
-        };
-
-        (fetch(url, opts)
-            .then(res => {
-                console.log("EMPIEZA LA CARGAR LUGARES")
-                return res.json()
-            })
-            .then(res => {
-                this.setState({ lugares: res.data.scoreresourceByuser })
-                console.log("TERMINA LA CARGAR LUGARES")
-                return true
-            })
-            .catch(console.error))
-
+        }
+        return coordenada
     }
 
-    CargarRutas() {
 
-        const query = `
-        query {
-            findTrailsByUser(id: 1){
-                nametrail
-                origintrail
-                destinytrail
+
+    cargarRutas() {
+        var cargarMisRutas = this.state.rutas.map((ruta) => {
+            return ({ nombreRuta: ruta.nametrail, origen: this.extraerCoordenada(ruta.origintrail), destino: this.extraerCoordenada(ruta.destinytrail) })
+        })
+
+        this.setState({
+            cargarMisRutas: cargarMisRutas
+        })
+    }
+
+    async componentWillMount() {
+        console.log("AQUI SE CARGAN LOS LUGARES")
+
+        var query = `
+            query {
+                scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
+                    content {
+                        _id
+                        name
+                        latitude
+                        longitude
+                    }
+                }
             }
-        }
         `;
 
         const url = IpGraphql;
-        const opts = {
+        const optsLugares = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ query })
         };
 
-        (fetch(url, opts)
-            .then(res => {
-                console.log("COMIENZA LA CARGA DE LAS RUTAS")
-                return res.json()
-            })
-            .then(res => {
-                this.setState({ rutas: res.data.findTrailsByUser })
-                console.log("TERMINA LA CARGA DE LAS RUTAS")
-                return true
-            })
-            .catch(console.error))
+        var MisLugares = await fetch(url, optsLugares)
+        MisLugares = await MisLugares.json()
+        MisLugares = MisLugares.data.scoreresourceByuser.content
+        this.setState({ lugares: MisLugares })
+
+
+        query = `
+            query {
+                findTrailsByUser(id: ${window.localStorage.user_id}){
+                    nametrail
+                    origintrail
+                    destinytrail
+                }
+            }
+            
+        `;
+
+        const optsRutas = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query })
+        };
+
+        var MisRutas = await fetch(url, optsRutas)
+        MisRutas = await MisRutas.json()
+        MisRutas = MisRutas.data.findTrailsByUser
+        console.log(MisRutas)
+        this.setState({ rutas: MisRutas })
+
+
+        await this.cargarRutas()
     }
 
-
-    componentWillMount() {
-
+    handleClickExit = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
     }
 
     render() {
 
-
+        const pintarRutas = this.state.cargarMisRutas.map((miruta) => {
+            return (
+                <div>
+                    <ContainerRuta misMarkers={[miruta.origen.coordenada, miruta.destino.coordenada]} nombreRuta={miruta.nombreRuta} nombreOrigen={miruta.origen.nombreLugar} nombreDestino={miruta.destino.nombreLugar} />
+                </div>
+            )
+        })
 
         return (
-            < div className="UserListRoutesPageSuccess" >
-
+            <div className="UserListRoutesPageSuccess" >
+                {console.log("RENDER")}
+                {console.log(this.state.cargarMisRutas)}
                 <div className="BarraMenuLateral">
                     <div className="MiniDatoUsuario">
                         <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
@@ -134,14 +160,16 @@ class UserListRoutesPageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClickExit} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">
                     <div className="TituloTarget">
                         <h1>Mis Rutas</h1>
                     </div>
-
+                    <div className="ContenedorMisRutas">
+                        {pintarRutas}
+                    </div>
                 </div>
             </div >
         )

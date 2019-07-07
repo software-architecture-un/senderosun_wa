@@ -51,7 +51,7 @@ class UserDataPageSuccess extends React.Component {
             }))
     }
 
-    handleClick = e => {
+    handleClickExit = e => {
         window.localStorage.clear()
         window.location.href = '/'
     }
@@ -104,7 +104,7 @@ class UserDataPageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClickExit} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
 
@@ -150,7 +150,6 @@ class UserDataPageSuccess extends React.Component {
                             <input className="InputUserData" value={this.state.email} disabled />
                         </div>
                     </div>
-                    {/* </div> */}
                 </div>
             </div >
         );

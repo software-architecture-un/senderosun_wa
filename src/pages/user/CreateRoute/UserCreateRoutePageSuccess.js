@@ -20,11 +20,15 @@ class UserCreateRoutePageSuccess extends React.Component {
         console.log("=====================================================================")
         const query = `
                 query {
-                    scoreresourceByuser(user_id: 1){
+                    scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
+                      content {
                         _id
                         name
+                      }
+                      message
+                      status
                     }
-                }
+                  }
             `;
 
         const url = IpGraphql;
@@ -38,7 +42,7 @@ class UserCreateRoutePageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
-                    ListaLugares: res.data.scoreresourceByuser,
+                    ListaLugares: res.data.scoreresourceByuser.content,
                 })
                 console.log(this.state.ListaLugares)
             })
@@ -105,6 +109,11 @@ class UserCreateRoutePageSuccess extends React.Component {
         })
     }
 
+    handleClickExit = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
+    }
+
     render() {
 
         const CargarLista = this.state.ListaLugares.map((lugar) => {
@@ -161,7 +170,7 @@ class UserCreateRoutePageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClickExit} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">

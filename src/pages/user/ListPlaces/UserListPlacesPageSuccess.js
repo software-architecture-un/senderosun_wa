@@ -22,14 +22,21 @@ class UserListPlacesPageSuccess extends React.Component {
 
     componentWillMount() {
         const query = `
+            
             query {
-                scoreresourceByuser(user_id: ${window.localStorage.user_id}){
-                name
-                description
-                latitude
-                longitude
+                scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
+                  content {
+                    _id
+                    name
+                    description
+                    latitude
+                    longitude
+                    user_id
+                  }
+                  message
+                  status
                 }
-            }
+              }
         `;
 
         const url = IpGraphql;
@@ -42,9 +49,9 @@ class UserListPlacesPageSuccess extends React.Component {
         (fetch(url, opts)
             .then(res => res.json())
             .then(res => {
-                console.log(res.data.scoreresourceByuser)
+                console.log(res.data.scoreresourceByuser.content)
                 this.setState({
-                    lugares: res.data.scoreresourceByuser
+                    lugares: res.data.scoreresourceByuser.content
                 })
                 console.log("===============================================")
                 console.log("este es el valor del estado actual")
@@ -61,6 +68,11 @@ class UserListPlacesPageSuccess extends React.Component {
                 })
             })
             .catch(console.error))
+    }
+
+    handleClickExit = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
     }
 
     render() {
@@ -120,7 +132,7 @@ class UserListPlacesPageSuccess extends React.Component {
                     <br />
                     <br />
                     <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
+                        <Link to="/" onClick={this.handleClickExit} className="LinkInactivo Salir">Salir</Link>
                     </div>
                 </div>
                 <div className="ObjetivoMenuLateralNuevo">
