@@ -11,6 +11,7 @@ import ActivitiesPage from './pages/HomePage/ActivitiesPage';
 import RoutesPage from './pages/HomePage/RoutesPage';
 
 import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage';
+import UserDeleteRoutePage from './pages/user/DeletePlace/UserDeletePlacePage';
 import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage';
 import UserDataPage from './pages/user/UserData/UserDataPage';
 import UserDeletePage from './pages/user/DeleteUser/UserDeletePage';
@@ -41,6 +42,7 @@ ReactDOM.render(
         <Route exact path='/user-list-routes' component={UserListRoutesPage} />
         <Route exact path='/user-create-place' component={UserCreatePlacePage} />
         <Route exact path='/user-create-route' component={UserCreateRoutePage} />
+        <Route exact path='/user-delete-route' component={UserDeleteRoutePage} />
         {/* ======================================================== */}
 
         <Route exact path='/mapa-lugar' component={MapaLugar} />
