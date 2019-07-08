@@ -1,7 +1,7 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import ErrorPage from '../../../components/Errors/ErrorPage';
-import UserDeletePlacePageSuccess from './UserDeletePlacePageSuccess';
+import UserDeletePlacePageSuccess from './UserDeleteRoutePageSuccess';
 
 class UserCreatePlacePage extends React.Component {
 

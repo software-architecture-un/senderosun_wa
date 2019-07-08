@@ -11,7 +11,7 @@ import ActivitiesPage from './pages/HomePage/ActivitiesPage';
 import RoutesPage from './pages/HomePage/RoutesPage';
 
 import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage';
-import UserDeleteRoutePage from './pages/user/DeletePlace/UserDeletePlacePage';
+import UserDeleteRoutePage from './pages/user/DeleteRoutes/UserDeleteRoutePage';
 import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage';
 import UserDataPage from './pages/user/UserData/UserDataPage';
 import UserDeletePage from './pages/user/DeleteUser/UserDeletePage';
