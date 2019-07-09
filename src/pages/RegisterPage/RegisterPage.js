@@ -114,7 +114,7 @@ class RegisterPage extends React.Component {
                         <br />
                         <label className="LabelRegistroPassword">Contraseña:</label>
                         <br />
-                        <input onChange={this.handleChange} name="CampoPassword" className="InputRegistroPassword" value={this.state.CampoPassword} />
+                        <input type="password"onChange={this.handleChange} name="CampoPassword" className="InputRegistroPassword" value={this.state.CampoPassword} />
                         <br />
                         <br />
 
