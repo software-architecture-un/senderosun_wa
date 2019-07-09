@@ -1,27 +1,34 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserCreateRoutePage.css';
-import { Link } from 'react-router-dom';
+import '../../../GeneralStyles.css';
+import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
 
 
 class UserCreateRoutePageSuccess extends React.Component {
 
     state = {
         NombreRuta: "",
-        LugarOrigen: "",
-        LugarDestino: ""
+        LugarOrigen: -1,
+        LugarDestino: -1,
+        ListaLugares: [],
     }
 
-    componentWillMount() {
+    CargarMisLugares() {
+        // console.log("=====================================================================")
+        // console.log("=====================================================================")
         const query = `
-            mutation {
-                userByEmail( email: { email: "${window.localStorage.email}" } ) {
-                    content {
-                        id 
+                query {
+                    scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
+                      content {
+                        _id
+                        name
+                      }
+                      message
+                      status
                     }
-                }
-            }
-        `;
+                  }
+            `;
 
         const url = IpGraphql;
         const opts = {
@@ -34,51 +41,65 @@ class UserCreateRoutePageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
-                    user_id: res.data.userByEmail.content.id,
+                    ListaLugares: res.data.scoreresourceByuser.content,
                 })
-                console.log("USER-ID = ", this.state.user_id)
+                // console.log(this.state.ListaLugares)
             })
             .catch(error => {
                 this.setState({ errors: error })
             }))
+        // console.log("=====================================================================")
+        // console.log("=====================================================================")
+    }
+
+
+    componentWillMount() {
+        this.CargarMisLugares()
     }
 
 
     handleClick = e => {
-        console.log('--> CREAR RUTA')
-        const query = `
+
+        if ((this.state.LugarOrigen !== this.state.LugarDestino) && (this.state.LugarOrigen !== -1) && (this.state.LugarDestino !== -1) && (this.state.NombreRuta.length > 0)) {
+            // console.log("SI SON DIFERENTES ++++++++++")
+            // console.log('--> CREAR RUTA')
+            // console.log(window.localStorage.user_id)
+            // console.log(this.state.NombreRuta)
+            // console.log(this.state.LugarOrigen)
+            // console.log(this.state.LugarDestino)
+            const query = `
             mutation {
                 createTrail(trail: {
-                usertrail:${this.state.user_id}
-                nametrail:"${this.state.NombreRuta}"
-                origintrail: ${this.state.LugarOrigen}
-                destinytrail: ${this.state.LugarDestino}
+                  usertrail: ${window.localStorage.user_id}
+                  nametrail: "${this.state.NombreRuta}"
+                  origintrail: ${this.state.LugarOrigen}
+                  destinytrail: ${this.state.LugarDestino}
                 }){
-                id
-                usertrail
-                nametrail
-                origintrail
-                destinytrail
+                  id
+                  usertrail
+                  nametrail
+                  origintrail
+                  destinytrail
                 }
-            }
-      `;
-        const url = IpGraphql;
-        const opts = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ query })
-        };
-        fetch(url, opts)
-            .then(res => res.json())
-            .then(res => {
-                if (this.state.NombreRuta.length !== 0 & this.state.LugarOrigen.length !== 0 & this.state.LugarDestino.length !== 0) {
+              }
+          `;
+            const url = IpGraphql;
+            const opts = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query })
+            };
+            fetch(url, opts)
+                .then(res => res.json())
+                .then(res => {
+                    // console.log(res.data);
                     alert(`Se ha creado la ruta con id = ${res.data.createTrail.id}`);
-                    console.log(res.data);
-                } else {
-                    alert("Error: verificar campos ingresados");
-                }
-            })
-            .catch(console.error)
+                })
+                .catch(console.error)
+        } else {
+            // console.log("LOS PUTOS LUGARES SON IGUALES O NO HA SELECCIONADO NI MIERDA")
+            alert("Error: verificar campos ingresados");
+        }
     }
 
     handleChange = e => {
@@ -87,73 +108,72 @@ class UserCreateRoutePageSuccess extends React.Component {
         })
     }
 
+    handleClickExit = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
+    }
+
     render() {
+
+        const CargarLista = this.state.ListaLugares.map((lugar) => {
+            return (
+                <option value={lugar._id}>{lugar.name}</option>
+            )
+        })
+
         return (
             < div className="UserCreateRoutePageSuccess" >
-                <div className="BarraMenuLateral">
-                    <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
-                    </div>
 
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-data" className="LinkInactivo DatosPersonales">Datos Personales</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-place" className="LinkInactivo CrearLugar">Crear Lugar</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-places" className="LinkInactivo ListaLugares">Lista Lugares</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-route" className="LinkActivo CrearRuta">Crear Ruta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-routes" className="LinkInactivo ListaRuta">Lista Rutas</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-delete" className="LinkInactivo EliminarCuenta">Eliminar Cuenta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
-                    </div>
-                </div>
+                <MenuNavegacion
+                    LinkDatosPersonales="LinkInactivo"
+                    LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
+                    LinkLugares="LinkInactivo"
+                    LinkCrearRuta="LinkActivo"
+                    LinkBorrarRuta="LinkInactivo"
+                    LinkRutas="LinkInactivo"
+                    LinkEliminarCuenta="LinkInactivo"
+                />
+
+
                 <div className="ObjetivoMenuLateralNuevo">
-                    <h1>Crear Una Nueva Ruta</h1>
 
-                    <label>Nombre Ruta</label>
-                    <input onChange={this.handleChange} name="NombreRuta" value={this.state.NombreRuta} />
-                    <br />
-                    <br />
-                    <label>Id Lugar Origen</label>
-                    <input onChange={this.handleChange} name="LugarOrigen" value={this.state.LugarOrigen} />
-                    <br />
-                    <br />
-                    <label>Id Lugar Destino</label>
-                    <input onChange={this.handleChange} name="LugarDestino" value={this.state.LugarDestino} />
+                    <div className="TituloTarget">
+                        <h1>Crea Una Nueva Ruta</h1>
+                    </div>
 
+                    <div className="ContenedorLabelsData">
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Nombre de la ruta:</label>
+                            </div>
+                            <input className="InputUserData" onChange={this.handleChange} name="NombreRuta" value={this.state.NombreRuta} />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Origen:</label>
+                            </div>
+                            <select className="InputUserData LugarRutaOrigen" onChange={this.handleChange} name="LugarOrigen" value={this.state.LugarOrigen}>
+                                <option value="-1" disabled selected>Seleccione el origen...</option>
+                                {CargarLista}
+                            </select>
+
+                        </div>
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Destino:</label>
+                            </div>
+                            <select className="InputUserData LugarRutaDestino" onChange={this.handleChange} name="LugarDestino" value={this.state.LugarDestino}>
+                                <option value="-1" disabled selected>Seleccione el destino...</option>
+                                {CargarLista}
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
                     <div>
-                        <button onClick={this.handleClick}>Crear Ruta</button>
+                        <button className="BotonCrearLugar" onClick={this.handleClick}>Crear Ruta</button>
                     </div>
                 </div>
             </div >

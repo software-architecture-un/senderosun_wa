@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
@@ -10,13 +10,16 @@ import GalleryPage from './pages/HomePage/GalleryPage';
 import ActivitiesPage from './pages/HomePage/ActivitiesPage';
 import RoutesPage from './pages/HomePage/RoutesPage';
 
-import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage'
-import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage'
-import UserDataPage from './pages/user/UserData/UserDataPage'
-import UserDeletePage from './pages/user/DeleteUser/UserDeletePage'
-import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage'
-import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage'
-import PruebaSoap from './pages/SOAP/PruebaSoap'
+import UserCreatePlacePage from './pages/user/CreatePLace/UserCreatePlacePage';
+import UserDeletePlacePage from './pages/user/DeletePlace/UserDeletePlacePage';
+import UserCreateRoutePage from './pages/user/CreateRoute/UserCreateRoutePage';
+import UserDeleteRoutePage from './pages/user/DeleteRoutes/UserDeleteRoutePage';
+import UserDataPage from './pages/user/UserData/UserDataPage';
+import UserDeletePage from './pages/user/DeleteUser/UserDeletePage';
+import UserListPlacesPage from './pages/user/ListPlaces/UserListPlacesPage';
+import UserListRoutesPage from './pages/user/ListRoutes/UserListRoutesPage';
+
+import MapaLugar from './components/Maps/MapaPrueba';
 
 import SOAPPAge from './pages/SOAP/SOAPPage';
 
@@ -39,14 +42,12 @@ ReactDOM.render(
         <Route exact path='/user-list-places' component={UserListPlacesPage} />
         <Route exact path='/user-list-routes' component={UserListRoutesPage} />
         <Route exact path='/user-create-place' component={UserCreatePlacePage} />
+        <Route exact path='/user-delete-place' component={UserDeletePlacePage} />
         <Route exact path='/user-create-route' component={UserCreateRoutePage} />
+        <Route exact path='/user-delete-route' component={UserDeleteRoutePage} />
         {/* ======================================================== */}
 
-        {/* ======================================================== */}
-        {/* PAGINA PRUEBA SOAP */}
-        <Route exact path='/prueba-soap' component={PruebaSoap} />
-        {/* ======================================================== */}
-
+        <Route exact path='/mapa-lugar' component={MapaLugar} />
 
         {/* ======================================================== */}
         {/* CONSUMIR EL SERVICIO SOAP EXPUESTO */}
@@ -54,5 +55,3 @@ ReactDOM.render(
         {/* ======================================================== */}
     </BrowserRouter>,
     document.getElementById('root'));
-
-serviceWorker.unregister();

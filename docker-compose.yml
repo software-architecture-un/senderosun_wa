@@ -1,0 +1,9 @@
+
+version: "3"
+services:
+  miapp-wa:
+    image: dieosiris23/senderosun_wa
+    container_name: senderosun_wa
+    image: senderosun_wa
+    ports:
+      - "9000:9000"

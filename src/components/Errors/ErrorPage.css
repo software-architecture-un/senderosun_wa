@@ -1,3 +1,31 @@
 .ErrorPage {
-    background: red;
+    font-family: 'Russo One', sans-serif;
+    display: flex;
+    text-align: center; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.MensajeError {
+    margin: 100px 0px 0px 0px;
+    border-radius: 25px;
+    text-align: center;
+    border: 5px solid #92DCE5;
+    width: 500px;
+    height: 500px;
+}
+
+.TituloError {
+    color: #D64933;
+    font-size: 70px;
+}
+
+.ParrafoError{
+    color: #D64933;
+    font-size: 35px;
+}
+
+.TengaloError {
+    color: #92DCE5;
+    font-size: 30px;
 }

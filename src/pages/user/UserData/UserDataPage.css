@@ -3,182 +3,41 @@
     padding: 40px 40px 40px 40px;
     font-family: 'Russo One', sans-serif;
     display: flex;
-    text-align: center; 
+    text-align: center;
 }
 
-.BarraLateral{
-      margin: 0px 0px 30px 0px;
- 
+.ContenedorDatosPersonales {
+    display: flex;
+    justify-content: center;
 }
 
-.MiniDatoUsuario{
-    border-radius: 20px 20px 20px 20px;
-    border: 5px solid #EEE5E9;
-    background: #D64933;
-    width: 250px;
-    height: 250px
+.ContenedorLabelsData {
+    margin-right: 10px;
 }
 
-.FotoPerfil{
-    border-radius: 20px 20px 20px 20px;
-    background: #EEE5E9;
-    margin: 20px 0px 0px 0px;
-
-}
-
-.OpcionMenu{
-    border: 5px solid #EEE5E9;
-    background: #2B303A;
+.LabelUserData {
+    justify-content: center;
+    margin-right: 15px;
+    display: flex;
     color: #92DCE5;
-    border-radius: 20px 20px 20px 20px;
-    font-size: 0.19in;
-    padding: 0px 0px 0px 0px;
-    margin: 10px 0px 10px 0px;
-    width: 250px;
-    height: 80px;
+    font-size: 45px;
+    width: 300px;
+    align-items: center;
 }
 
-.OpcionMenu:hover{
+.InputUserData {
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    border-radius:  20px;
     border: 5px solid #D64933;
-    background: #92DCE5;
-    color:      #2B303A;
+    width: 450px;
+    height: 45px;
+    margin: 15px 0px 15px 0px;
 }
 
-.OpcionMenu:active{
-    background: #D64933;
-    color:      #92DCE5;
-    border: 5px solid #EEE5E9;
-    transform:  scale(0.95);
+.OrdenarInformacion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
- 
-.NombreMenu{
-    margin: 0px 0px 0px 0px;
-}
-
-/* .DatosPersonales, .EliminarCuenta{
-    padding: 4% 0px 0px 0px;
-} */
-
-.CrearListas, .VerListas, .Lugares, .CerrarSesion{
-    padding: 9% 0px 0px 0px;
-}
-
-.ObjetivoMenuLateralNuevo{
-    border-radius: 0px 0px 20px 20px;
-    margin: 270px 0px 0px 50px;
-    border: 5px solid #EEE5E9;
-    width: 108000px;
-    height: 580px;
-}
-
-.OpcionMenuLink{
-    border: 5px solid #EEE5E9;
-    background: #2B303A;
-    color: #92DCE5;
-    font-size: 0.19in;
-    text-decoration: none;
-    border-radius:   20px;
-    padding:         15px;
-    margin: 10px 0px 10px 0px;
-    width: 250px;
-    height: 80px;
-}
-
-
-.OpcionMenuLink:hover{
-    border: 5px solid #D64933;
-    background: #92DCE5;
-    color:      #2B303A;
-}
-
-.OpcionMenuLink:active{
-    background: #D64933;
-    color:      #92DCE5;
-    border: 5px solid #EEE5E9;
-    transform:  scale(0.95);
-}
- 
-/* =========================================================================================== */
-/* =========================================================================================== */
-/* =========================================================================================== */
-.LinkActivo{
-    border: 5px solid #D64933;
-    background: #92DCE5;
-    color:      #2B303A;
-    font-size: 0.19in;
-    text-decoration: none;
-    border-radius:   20px;
-    padding:         15px;
-    margin: 10px 0px 10px 0px;
-}
-
-.LinkActivo:hover{
-    border: 5px solid #EEE5E9;
-    background: #2B303A;
-    color: #92DCE5;
-}
-
-.LinkActivo:active{
-    background: #D64933;
-    color:      #92DCE5;
-    border: 5px solid #EEE5E9;
-    transform:  scale(0.95);
-}
-
-.LinkInactivo{
-    border: 5px solid #EEE5E9;
-    background: #2B303A;
-    color: #92DCE5;
-    font-size: 0.19in;
-    text-decoration: none;
-    border-radius:   20px;
-    padding:         15px;
-    margin: 10px 0px 10px 0px;
-}
-
-.LinkInactivo:hover{
-    border: 5px solid #D64933;
-    background: #92DCE5;
-    color:      #2B303A;
-}
-
-.LinkInactivo:active{
-    background: #D64933;
-    color:      #92DCE5;
-    border: 5px solid #EEE5E9;
-    transform:  scale(0.95);
-}
-
-
-.DatosPersonales {
-    padding: 15px 40px 15px 40px;
-}
-
-.CrearLugar {
-    padding: 15px 70px 15px 70px;
-}
-
-.ListaLugares {
-    padding: 15px 60px 15px 60px;
-}
-
-.CrearRuta {
-    padding: 15px 75px 15px 75px;
-}
-
-.ListaRuta {
-    padding: 15px 70px 15px 70px;
-}
-
-.EliminarCuenta {
-    padding: 15px 50px 15px 50px;
-}
-
-.Salir {
-    padding: 15px 102px 15px 102px;
-}
-
-
-/* =========================================================================================== */
-/* =========================================================================================== */
-/* =========================================================================================== */

@@ -1,7 +1,8 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDataPage.css';
-import { Link } from 'react-router-dom';
+import '../../../GeneralStyles.css';
+import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
 
 class UserDataPageSuccess extends React.Component {
 
@@ -35,6 +36,7 @@ class UserDataPageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 window.localStorage.setItem('user_id', res.data.userByEmail.content.id)
+                window.localStorage.setItem('name', res.data.userByEmail.content.name)
                 this.setState({
                     name: res.data.userByEmail.content.name,
                     age: res.data.userByEmail.content.age,
@@ -48,7 +50,7 @@ class UserDataPageSuccess extends React.Component {
             }))
     }
 
-    handleClick = e => {
+    handleClickExit = e => {
         window.localStorage.clear()
         window.location.href = '/'
     }
@@ -56,80 +58,60 @@ class UserDataPageSuccess extends React.Component {
     render() {
         return (
             < div className="UserDataPageSuccess" >
-                <div className="BarraMenuLateral">
-                    <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">Fulanito Perez</h2>
+
+                <MenuNavegacion
+                    LinkDatosPersonales="LinkActivo"
+                    LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
+                    LinkLugares="LinkInactivo"
+                    LinkCrearRuta="LinkInactivo"
+                    LinkBorrarRuta="LinkInactivo"
+                    LinkRutas="LinkInactivo"
+                    LinkEliminarCuenta="LinkInactivo"
+                />
+
+
+                <div className="ObjetivoMenuLateralNuevo">
+                    <div className="TituloTarget">
+                        <h1>Datos Personales</h1>
                     </div>
 
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-data" className="LinkActivo DatosPersonales">Datos Personales</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-place" className="LinkInactivo CrearLugar">Crear Lugar</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-places" className="LinkInactivo ListaLugares">Lista Lugares</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-route" className="LinkInactivo CrearRuta">Crear Ruta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-routes" className="LinkInactivo ListaRuta">Lista Rutas</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-delete" className="LinkInactivo EliminarCuenta">Eliminar Cuenta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
-                    </div>
-                </div>
-                <div className="ObjetivoMenuLateralNuevo">
-                    <br />
-                    <h1>Datos Personales</h1>
-                    <div>
-                        <label>Id Usuario</label>
-                        <input value={this.state.id} />
-                    </div>
-                    <br />
-                    <div>
-                        <label>Nombre</label>
-                        <input value={this.state.name} />
-                    </div>
-                    <br />
-                    <div>
-                        <label>Documento</label>
-                        <input value={this.state.document} />
-                    </div>
-                    <br />
-                    <div>
-                        <label>Age</label>
-                        <input value={this.state.age} />
-                    </div>
-                    <br />
-                    <div>
-                        <label>Correo</label>
-                        <input value={this.state.email} />
+                    {/* <div className="ContenedorDatosPersonales"> */}
+                    <div className="ContenedorLabelsData">
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Id Usuario:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.id} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Nombre:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.name} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Documento:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.document} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Age:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.age} disabled />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label> Correo:</label>
+                            </div>
+                            <input className="InputUserData" value={this.state.email} disabled />
+                        </div>
                     </div>
                 </div>
             </div >

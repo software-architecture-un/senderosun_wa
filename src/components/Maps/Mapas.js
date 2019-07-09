@@ -3,8 +3,6 @@ import Map from './Map';
 
 class Mapas extends React.Component {
 
-
-
     state = {
         googleMapsApiKey: "AIzaSyCOJZ-oU1uV5KmoxNS9zWBr2emcUZWjXUc",
     }
@@ -21,7 +19,7 @@ class Mapas extends React.Component {
                     }
                     markers={this.props.markers}
                     loadingElement={this.state.loadingElement || <div style={{ height: `100%` }} />}
-                    containerElement={this.state.containerElement || <div style={{ height: "400px" }} />}
+                    containerElement={this.state.containerElement || <div style={{ height: "300px" }} />}
                     mapElement={this.state.mapElement || <div style={{ height: `100%` }} />}
                     defaultCenter={this.state.defaultCenter || { lat: 25.8103146, lng: -80.1751609 }}
                     defaultZoom={this.state.defaultZoom || 11}
