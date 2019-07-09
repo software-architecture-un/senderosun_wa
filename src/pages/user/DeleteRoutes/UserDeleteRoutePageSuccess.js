@@ -13,10 +13,10 @@ class UserDeletePlacePageSuccess extends React.Component {
 
 
     componentWillMount() {
-        console.log("WIL MOUNT")
+        // console.log("WIL MOUNT")
         const query = `
                 query {
-                    findTrailsByUser(id: 4){
+                    findTrailsByUser(id: ${window.localStorage.user_id}){
                     id
                     nametrail
                     origintrail
@@ -42,8 +42,8 @@ class UserDeletePlacePageSuccess extends React.Component {
     async SeleccionarRutaBorrar() {
 
         if (this.state.RutaBorrar !== "-1") {
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
             var query = `
                 mutation {
@@ -64,11 +64,11 @@ class UserDeletePlacePageSuccess extends React.Component {
             ResultadoBorrarRuta = await ResultadoBorrarRuta.json()
             ResultadoBorrarRuta = ResultadoBorrarRuta.data
 
-            console.log(ResultadoBorrarRuta)
+            // console.log(ResultadoBorrarRuta)
 
-            console.log("HOLA MUNDO")
+            // console.log("HOLA MUNDO")
 
-            console.log(this.state.RutaBorrar)
+            // console.log(this.state.RutaBorrar)
 
             alert("Se ha eliminado la ruta satisfactoriamente")
 
@@ -78,7 +78,7 @@ class UserDeletePlacePageSuccess extends React.Component {
 
             query = `
             query {
-                findTrailsByUser(id: 4){
+                findTrailsByUser(id: ${window.localStorage.user_id}){
                     id
                         nametrail
                         origintrail
@@ -98,8 +98,8 @@ class UserDeletePlacePageSuccess extends React.Component {
                 .then(res => { this.setState({ ListaRutas: res.data.findTrailsByUser }) })
                 .catch(error => { this.setState({ errors: error }) }))
 
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
         } else {
             alert("Por favor seleccione una ruta para eliminar");
         }
@@ -126,11 +126,12 @@ class UserDeletePlacePageSuccess extends React.Component {
             )
         })
         return (
-            < div className="UserDeletePlacePageSuccess" >
-                {console.log("COMPONENTE")}
+            < div className="UserDeleteRoutePageSuccess" >
+                {/* {console.log("COMPONENTE")} */}
                 <MenuNavegacion
                     LinkDatosPersonales="LinkInactivo"
                     LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
                     LinkLugares="LinkInactivo"
                     LinkCrearRuta="LinkInactivo"
                     LinkBorrarRuta="LinkActivo"
@@ -140,7 +141,7 @@ class UserDeletePlacePageSuccess extends React.Component {
 
                 <div className="ObjetivoMenuLateralNuevo">
                     <div className="TituloTarget">
-                        <h1>Borar una ruta</h1>
+                        <h1>Borrar una ruta</h1>
                     </div>
 
                     <div className="OrdenarInformacion">
@@ -155,7 +156,7 @@ class UserDeletePlacePageSuccess extends React.Component {
                     </div>
 
                     <div>
-                        <button className="BotonCrearLugar" onClick={this.handleClick}>Borar Ruta</button>
+                        <button className="BotonCrearLugar" onClick={this.handleClick}>Borrar Ruta</button>
                     </div>
                 </div>
             </div >

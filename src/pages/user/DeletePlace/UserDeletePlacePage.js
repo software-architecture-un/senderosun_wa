@@ -1,9 +1,9 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import ErrorPage from '../../../components/Errors/ErrorPage';
-import UserDeleteRoutePageSuccess from './UserDeleteRoutePageSuccess';
+import UserDeletePlacePageSuccess from './UserDeletePlacePageSuccess';
 
-class UserCreatePlacePage extends React.Component {
+class UserDeletePlacePage extends React.Component {
 
     state = {
 
@@ -33,7 +33,7 @@ class UserCreatePlacePage extends React.Component {
                 if (res.data.verifyToken != null) {
                     this.setState({
                         status: res.data.verifyToken.status,
-                        load: <UserDeleteRoutePageSuccess />,
+                        load: <UserDeletePlacePageSuccess />,
                     })
                     // console.log(res.data.verifyToken.status)
                 } else {
@@ -54,6 +54,7 @@ class UserCreatePlacePage extends React.Component {
             </div>
         );
     }
+
 }
 
-export default UserCreatePlacePage;
+export default UserDeletePlacePage;

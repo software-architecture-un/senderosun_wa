@@ -1,6 +1,6 @@
 import React from 'react';
-import MapaMarcarLugar from './MapaMarcarLugar';
-import Mapas from './Mapas';
+// import MapaMarcarLugar from './MapaMarcarLugar';
+// import Mapas from './Mapas';
 import ContainerRuta from './ContainerRuta'
 
 class MapaPrueba extends React.Component {

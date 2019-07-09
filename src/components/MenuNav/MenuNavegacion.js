@@ -33,6 +33,12 @@ class MenuNavegacion extends React.Component {
                 <br />
                 <br />
                 <div>
+                    <Link to="/user-delete-place" className={this.props.LinkBorrarLugar + " BorrarLugar"}>Borrar Lugar</Link>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div>
                     <Link to="/user-list-places" className={this.props.LinkLugares + " Lugares"}>Lugares</Link>
                 </div>
                 <br />

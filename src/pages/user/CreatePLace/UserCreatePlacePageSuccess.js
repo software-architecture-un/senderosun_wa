@@ -37,7 +37,7 @@ class UserCreatePlacePageSuccess extends React.Component {
                 this.setState({
                     user_id: res.data.userByEmail.content.id,
                 })
-                console.log("USER-ID = ", this.state.user_id)
+                // console.log("USER-ID = ", this.state.user_id)
             })
             .catch(error => {
                 this.setState({ errors: error })
@@ -118,6 +118,7 @@ class UserCreatePlacePageSuccess extends React.Component {
                 <MenuNavegacion
                     LinkDatosPersonales="LinkInactivo"
                     LinkCrearLugar="LinkActivo"
+                    LinkBorrarLugar="LinkInactivo"
                     LinkLugares="LinkInactivo"
                     LinkCrearRuta="LinkInactivo"
                     LinkBorrarRuta="LinkInactivo"

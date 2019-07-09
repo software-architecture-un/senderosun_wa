@@ -52,10 +52,10 @@ class UserListPlacesPageSuccess extends React.Component {
                 this.setState({
                     lugares: res.data.scoreresourceByuser.content
                 })
-                console.log("===============================================")
-                console.log("este es el valor del estado actual")
-                console.log(this.state.lugares)
-                console.log("===============================================")
+                // console.log("===============================================")
+                // console.log("este es el valor del estado actual")
+                // console.log(this.state.lugares)
+                // console.log("===============================================")
 
             })
             .then(res => {
@@ -90,6 +90,7 @@ class UserListPlacesPageSuccess extends React.Component {
                 <MenuNavegacion
                     LinkDatosPersonales="LinkInactivo"
                     LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
                     LinkLugares="LinkActivo"
                     LinkCrearRuta="LinkInactivo"
                     LinkBorrarRuta="LinkInactivo"

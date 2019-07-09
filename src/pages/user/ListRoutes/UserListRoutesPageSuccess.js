@@ -40,7 +40,7 @@ class UserListRoutesPageSuccess extends React.Component {
     }
 
     async componentWillMount() {
-        console.log("AQUI SE CARGAN LOS LUGARES")
+        // console.log("AQUI SE CARGAN LOS LUGARES")
 
         var query = `
             query {
@@ -88,7 +88,7 @@ class UserListRoutesPageSuccess extends React.Component {
         var MisRutas = await fetch(url, optsRutas)
         MisRutas = await MisRutas.json()
         MisRutas = MisRutas.data.findTrailsByUser
-        console.log(MisRutas)
+        // console.log(MisRutas)
         this.setState({ rutas: MisRutas })
 
 
@@ -116,6 +116,7 @@ class UserListRoutesPageSuccess extends React.Component {
                 <MenuNavegacion
                     LinkDatosPersonales="LinkInactivo"
                     LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
                     LinkLugares="LinkInactivo"
                     LinkCrearRuta="LinkInactivo"
                     LinkBorrarRuta="LinkInactivo"

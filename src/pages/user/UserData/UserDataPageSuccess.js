@@ -62,6 +62,7 @@ class UserDataPageSuccess extends React.Component {
                 <MenuNavegacion
                     LinkDatosPersonales="LinkActivo"
                     LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
                     LinkLugares="LinkInactivo"
                     LinkCrearRuta="LinkInactivo"
                     LinkBorrarRuta="LinkInactivo"

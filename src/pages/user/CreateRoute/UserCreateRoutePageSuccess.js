@@ -15,8 +15,8 @@ class UserCreateRoutePageSuccess extends React.Component {
     }
 
     CargarMisLugares() {
-        console.log("=====================================================================")
-        console.log("=====================================================================")
+        // console.log("=====================================================================")
+        // console.log("=====================================================================")
         const query = `
                 query {
                     scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
@@ -43,13 +43,13 @@ class UserCreateRoutePageSuccess extends React.Component {
                 this.setState({
                     ListaLugares: res.data.scoreresourceByuser.content,
                 })
-                console.log(this.state.ListaLugares)
+                // console.log(this.state.ListaLugares)
             })
             .catch(error => {
                 this.setState({ errors: error })
             }))
-        console.log("=====================================================================")
-        console.log("=====================================================================")
+        // console.log("=====================================================================")
+        // console.log("=====================================================================")
     }
 
 
@@ -61,12 +61,12 @@ class UserCreateRoutePageSuccess extends React.Component {
     handleClick = e => {
 
         if ((this.state.LugarOrigen !== this.state.LugarDestino) && (this.state.LugarOrigen !== -1) && (this.state.LugarDestino !== -1) && (this.state.NombreRuta.length > 0)) {
-            console.log("SI SON DIFERENTES ++++++++++")
-            console.log('--> CREAR RUTA')
-            console.log(window.localStorage.user_id)
-            console.log(this.state.NombreRuta)
-            console.log(this.state.LugarOrigen)
-            console.log(this.state.LugarDestino)
+            // console.log("SI SON DIFERENTES ++++++++++")
+            // console.log('--> CREAR RUTA')
+            // console.log(window.localStorage.user_id)
+            // console.log(this.state.NombreRuta)
+            // console.log(this.state.LugarOrigen)
+            // console.log(this.state.LugarDestino)
             const query = `
             mutation {
                 createTrail(trail: {
@@ -92,12 +92,12 @@ class UserCreateRoutePageSuccess extends React.Component {
             fetch(url, opts)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     alert(`Se ha creado la ruta con id = ${res.data.createTrail.id}`);
                 })
                 .catch(console.error)
         } else {
-            console.log("LOS PUTOS LUGARES SON IGUALES O NO HA SELECCIONADO NI MIERDA")
+            // console.log("LOS PUTOS LUGARES SON IGUALES O NO HA SELECCIONADO NI MIERDA")
             alert("Error: verificar campos ingresados");
         }
     }
@@ -127,6 +127,7 @@ class UserCreateRoutePageSuccess extends React.Component {
                 <MenuNavegacion
                     LinkDatosPersonales="LinkInactivo"
                     LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
                     LinkLugares="LinkInactivo"
                     LinkCrearRuta="LinkActivo"
                     LinkBorrarRuta="LinkInactivo"
