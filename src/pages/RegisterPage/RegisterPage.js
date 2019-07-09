@@ -95,20 +95,20 @@ class RegisterPage extends React.Component {
                     <div className="ContenedorCamposRegistro">
                         <label className="LabelRegistroNombre">Nombre:</label>
                         <br />
-                        <input onChange={this.handleChange} name="CampoNombre" className="InputRegistroNombre" value={this.state.CampoNombre} />
+                        <input type="text" onChange={this.handleChange} name="CampoNombre" className="InputRegistroNombre" value={this.state.CampoNombre} />
                         <br />
                         <br />
                         <label className="LabelRegistroIdentificacion">Identificación:</label>
                         <br />
-                        <input onChange={this.handleChange} name="CampoIdentificacion" className="InputRegistroIdentificacion" value={this.state.CampoIdentificacion} />
+                        <input type="number"onChange={this.handleChange} name="CampoIdentificacion" className="InputRegistroIdentificacion" value={this.state.CampoIdentificacion} />
                         <br />
                         <br />
                         <label className="LabelRegistroEdad">Edad:</label>
                         <br />
-                        <input onChange={this.handleChange} name="CampoEdad" className="InputRegistroEdad" value={this.state.CampoEdad} />
+                        <input type="number" onChange={this.handleChange} name="CampoEdad" className="InputRegistroEdad" value={this.state.CampoEdad} />
                         <br />
                         <br />
-                        <label className="LabelRegistroGenero">Correo electrónico:</label>
+                        <label type="email"className="LabelRegistroGenero">Correo electrónico:</label>
                         <br />
                         <input onChange={this.handleChange} name="CampoEmail" className="InputRegistroGenero" value={this.state.CampoEmail} />                        <br />
                         <br />
