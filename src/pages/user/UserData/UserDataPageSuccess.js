@@ -2,8 +2,7 @@ import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDataPage.css';
 import '../../../GeneralStyles.css';
-import { Link } from 'react-router-dom';
-import ImagenUser from '../../../images/user.png';
+import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
 
 class UserDataPageSuccess extends React.Component {
 
@@ -51,7 +50,7 @@ class UserDataPageSuccess extends React.Component {
             }))
     }
 
-    handleClick = e => {
+    handleClickExit = e => {
         window.localStorage.clear()
         window.location.href = '/'
     }
@@ -59,54 +58,18 @@ class UserDataPageSuccess extends React.Component {
     render() {
         return (
             < div className="UserDataPageSuccess" >
-                <div className="BarraMenuLateral">
-                    <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
-                    </div>
 
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-data" className="LinkActivo DatosPersonales">Datos Personales</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-place" className="LinkInactivo CrearLugar">Crear Lugar</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-places" className="LinkInactivo Lugares">Lugares</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-route" className="LinkInactivo CrearRuta">Crear Ruta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-routes" className="LinkInactivo Rutas">Rutas</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-delete" className="LinkInactivo EliminarCuenta">Eliminar Cuenta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/" onClick={this.handleClick} className="LinkInactivo Salir">Salir</Link>
-                    </div>
-                </div>
+                <MenuNavegacion
+                    LinkDatosPersonales="LinkActivo"
+                    LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
+                    LinkLugares="LinkInactivo"
+                    LinkCrearRuta="LinkInactivo"
+                    LinkBorrarRuta="LinkInactivo"
+                    LinkRutas="LinkInactivo"
+                    LinkEliminarCuenta="LinkInactivo"
+                />
+
 
                 <div className="ObjetivoMenuLateralNuevo">
                     <div className="TituloTarget">
@@ -150,7 +113,6 @@ class UserDataPageSuccess extends React.Component {
                             <input className="InputUserData" value={this.state.email} disabled />
                         </div>
                     </div>
-                    {/* </div> */}
                 </div>
             </div >
         );

@@ -72,12 +72,20 @@
     padding: 15px 70px 15px 70px;
 }
 
+.BorrarLugar {
+    padding: 15px 65px 15px 65px;
+}
+
 .Lugares {
     padding: 15px 90px 15px 90px;
 }
 
 .CrearRuta {
     padding: 15px 75px 15px 75px;
+}
+
+.BorrarRuta {
+    padding: 15px 67px 15px 67px;
 }
 
 .Rutas {

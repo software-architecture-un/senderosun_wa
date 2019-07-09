@@ -1,10 +1,9 @@
 import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
-import { Link } from 'react-router-dom';
 import './UserListPlacesPage.css';
 import '../../../GeneralStyles.css';
 import ContainerMap from '../../../components/Maps/ContainerMap';
-import ImagenUser from '../../../images/user.png';
+import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
 
 
 class UserListPlacesPageSuccess extends React.Component {
@@ -22,14 +21,21 @@ class UserListPlacesPageSuccess extends React.Component {
 
     componentWillMount() {
         const query = `
+            
             query {
-                scoreresourceByuser(user_id: ${window.localStorage.user_id}){
-                name
-                description
-                latitude
-                longitude
+                scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
+                  content {
+                    _id
+                    name
+                    description
+                    latitude
+                    longitude
+                    user_id
+                  }
+                  message
+                  status
                 }
-            }
+              }
         `;
 
         const url = IpGraphql;
@@ -42,14 +48,14 @@ class UserListPlacesPageSuccess extends React.Component {
         (fetch(url, opts)
             .then(res => res.json())
             .then(res => {
-                console.log(res.data.scoreresourceByuser)
+                console.log(res.data.scoreresourceByuser.content)
                 this.setState({
-                    lugares: res.data.scoreresourceByuser
+                    lugares: res.data.scoreresourceByuser.content
                 })
-                console.log("===============================================")
-                console.log("este es el valor del estado actual")
-                console.log(this.state.lugares)
-                console.log("===============================================")
+                // console.log("===============================================")
+                // console.log("este es el valor del estado actual")
+                // console.log(this.state.lugares)
+                // console.log("===============================================")
 
             })
             .then(res => {
@@ -61,6 +67,11 @@ class UserListPlacesPageSuccess extends React.Component {
                 })
             })
             .catch(console.error))
+    }
+
+    handleClickExit = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
     }
 
     render() {
@@ -75,54 +86,18 @@ class UserListPlacesPageSuccess extends React.Component {
 
         return (
             < div className="UserListPlacesPageSuccess" >
-                <div className="BarraMenuLateral">
-                    <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
-                    </div>
 
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-data" className="LinkInactivo DatosPersonales">Datos Personales</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-place" className="LinkInactivo CrearLugar">Crear Lugar</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-places" className="LinkActivo Lugares">Lugares</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-route" className="LinkInactivo CrearRuta">Crear Ruta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-routes" className="LinkInactivo Rutas">Rutas</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-delete" className="LinkInactivo EliminarCuenta">Eliminar Cuenta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
-                    </div>
-                </div>
+                <MenuNavegacion
+                    LinkDatosPersonales="LinkInactivo"
+                    LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
+                    LinkLugares="LinkActivo"
+                    LinkCrearRuta="LinkInactivo"
+                    LinkBorrarRuta="LinkInactivo"
+                    LinkRutas="LinkInactivo"
+                    LinkEliminarCuenta="LinkInactivo"
+                />
+
                 <div className="ObjetivoMenuLateralNuevo">
                     <div className="TituloTarget">
                         <h1>Mis Lugares</h1>

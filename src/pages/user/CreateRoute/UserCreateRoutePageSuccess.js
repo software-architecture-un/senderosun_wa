@@ -2,8 +2,7 @@ import React from 'react';
 import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserCreateRoutePage.css';
 import '../../../GeneralStyles.css';
-import ImagenUser from '../../../images/user.png';
-import { Link } from 'react-router-dom';
+import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
 
 
 class UserCreateRoutePageSuccess extends React.Component {
@@ -16,15 +15,19 @@ class UserCreateRoutePageSuccess extends React.Component {
     }
 
     CargarMisLugares() {
-        console.log("=====================================================================")
-        console.log("=====================================================================")
+        // console.log("=====================================================================")
+        // console.log("=====================================================================")
         const query = `
                 query {
-                    scoreresourceByuser(user_id: 1){
+                    scoreresourceByuser(user_id: ${window.localStorage.user_id}) {
+                      content {
                         _id
                         name
+                      }
+                      message
+                      status
                     }
-                }
+                  }
             `;
 
         const url = IpGraphql;
@@ -38,15 +41,15 @@ class UserCreateRoutePageSuccess extends React.Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
-                    ListaLugares: res.data.scoreresourceByuser,
+                    ListaLugares: res.data.scoreresourceByuser.content,
                 })
-                console.log(this.state.ListaLugares)
+                // console.log(this.state.ListaLugares)
             })
             .catch(error => {
                 this.setState({ errors: error })
             }))
-        console.log("=====================================================================")
-        console.log("=====================================================================")
+        // console.log("=====================================================================")
+        // console.log("=====================================================================")
     }
 
 
@@ -58,12 +61,12 @@ class UserCreateRoutePageSuccess extends React.Component {
     handleClick = e => {
 
         if ((this.state.LugarOrigen !== this.state.LugarDestino) && (this.state.LugarOrigen !== -1) && (this.state.LugarDestino !== -1) && (this.state.NombreRuta.length > 0)) {
-            console.log("SI SON DIFERENTES ++++++++++")
-            console.log('--> CREAR RUTA')
-            console.log(window.localStorage.user_id)
-            console.log(this.state.NombreRuta)
-            console.log(this.state.LugarOrigen)
-            console.log(this.state.LugarDestino)
+            // console.log("SI SON DIFERENTES ++++++++++")
+            // console.log('--> CREAR RUTA')
+            // console.log(window.localStorage.user_id)
+            // console.log(this.state.NombreRuta)
+            // console.log(this.state.LugarOrigen)
+            // console.log(this.state.LugarDestino)
             const query = `
             mutation {
                 createTrail(trail: {
@@ -89,12 +92,12 @@ class UserCreateRoutePageSuccess extends React.Component {
             fetch(url, opts)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     alert(`Se ha creado la ruta con id = ${res.data.createTrail.id}`);
                 })
                 .catch(console.error)
         } else {
-            console.log("LOS PUTOS LUGARES SON IGUALES O NO HA SELECCIONADO NI MIERDA")
+            // console.log("LOS PUTOS LUGARES SON IGUALES O NO HA SELECCIONADO NI MIERDA")
             alert("Error: verificar campos ingresados");
         }
     }
@@ -103,6 +106,11 @@ class UserCreateRoutePageSuccess extends React.Component {
         this.setState({
             [e.target.name]: e.target.value,
         })
+    }
+
+    handleClickExit = e => {
+        window.localStorage.clear()
+        window.location.href = '/'
     }
 
     render() {
@@ -116,54 +124,18 @@ class UserCreateRoutePageSuccess extends React.Component {
         return (
             < div className="UserCreateRoutePageSuccess" >
 
-                <div className="BarraMenuLateral">
-                    <div className="MiniDatoUsuario">
-                        <img className="FotoPerfil" src={ImagenUser} width="160" height="160" alt=""></img>
-                        <h2 className="NombreUsuario">{window.localStorage.name}</h2>
-                    </div>
+                <MenuNavegacion
+                    LinkDatosPersonales="LinkInactivo"
+                    LinkCrearLugar="LinkInactivo"
+                    LinkBorrarLugar="LinkInactivo"
+                    LinkLugares="LinkInactivo"
+                    LinkCrearRuta="LinkActivo"
+                    LinkBorrarRuta="LinkInactivo"
+                    LinkRutas="LinkInactivo"
+                    LinkEliminarCuenta="LinkInactivo"
+                />
 
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-data" className="LinkInactivo DatosPersonales">Datos Personales</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-place" className="LinkInactivo CrearLugar">Crear Lugar</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-places" className="LinkInactivo Lugares">Lugares</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-create-route" className="LinkActivo CrearRuta">Crear Ruta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-list-routes" className="LinkInactivo Rutas">Rutas</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/user-delete" className="LinkInactivo EliminarCuenta">Eliminar Cuenta</Link>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <Link to="/" className="LinkInactivo Salir">Salir</Link>
-                    </div>
-                </div>
+
                 <div className="ObjetivoMenuLateralNuevo">
 
                     <div className="TituloTarget">

@@ -35,7 +35,7 @@ class UserCreatePlacePage extends React.Component {
                         status: res.data.verifyToken.status,
                         load: <UserCreatePlacePageSuccess />,
                     })
-                    console.log(res.data.verifyToken.status)
+                    // console.log(res.data.verifyToken.status)
                 } else {
                     this.setState({
                         load: <ErrorPage />,
