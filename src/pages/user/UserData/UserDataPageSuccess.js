@@ -3,6 +3,8 @@ import IpGraphql from '../../../components/conection/IpGraphql';
 import './UserDataPage.css';
 import '../../../GeneralStyles.css';
 import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
+import { Permisos } from '../../../components/firebase/push-notification';
+import ImagenUser from '../../../images/user.png';
 
 class UserDataPageSuccess extends React.Component {
 
@@ -10,7 +12,10 @@ class UserDataPageSuccess extends React.Component {
 
     }
 
-    componentWillMount() {
+    componentWillMount() {  
+        console.log('empieza permiso')      
+        this.cargarPermiso()
+        console.log('termina permiso')
         const query = `
             mutation {
                 userByEmail(email: { email: "${window.localStorage.email}" }){
@@ -43,21 +48,21 @@ class UserDataPageSuccess extends React.Component {
                     document: res.data.userByEmail.content.document,
                     email: res.data.userByEmail.content.email,
                     id: res.data.userByEmail.content.id,
-                })
+                })            
             })
             .catch(error => {
                 this.setState({ errors: error })
             }))
     }
 
-    handleClickExit = e => {
-        window.localStorage.clear()
-        window.location.href = '/'
+    cargarPermiso = () => {
+        Permisos()   
     }
 
-    render() {
+    render() {        
         return (
             < div className="UserDataPageSuccess" >
+                {/* {Permisos()} */}
 
                 <MenuNavegacion
                     LinkDatosPersonales="LinkActivo"

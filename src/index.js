@@ -23,6 +23,8 @@ import MapaLugar from './components/Maps/MapaPrueba';
 
 import SOAPPAge from './pages/SOAP/SOAPPage';
 
+import {initializeFirebase} from './components/firebase/push-notification';
+
 ReactDOM.render(
     <BrowserRouter style={{ background: 'red', }}>
         {/* ======================================================== */}
@@ -55,3 +57,4 @@ ReactDOM.render(
         {/* ======================================================== */}
     </BrowserRouter>,
     document.getElementById('root'));
+    initializeFirebase();
