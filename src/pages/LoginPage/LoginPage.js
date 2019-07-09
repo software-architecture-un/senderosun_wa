@@ -81,10 +81,10 @@ class LoginPage extends React.Component {
                     <h1 className="TituloLogin">Iniciar Sesión</h1>
                     <div className="ContenedorCamposLogin">
                         <label className="LabelUsuario">Usuario:</label>
-                        <input name="CampoUsuario" onChange={this.handleChange} className="InputUsuario" value={this.state.CampouUario} ></input>
+                        <input type="email" name="CampoUsuario" onChange={this.handleChange} className="InputUsuario" value={this.state.CampouUario} ></input>
                         <br />
                         <label className="LabelPassword">Contraseña:</label>
-                        <input name="CampoPassword" onChange={this.handleChange} className="InputPassword" value={this.state.CampoPassword}  ></input>
+                        <input type="password"name="CampoPassword" onChange={this.handleChange} className="InputPassword" value={this.state.CampoPassword}  ></input>
                     </div>
                     <div className="BotonesEntrarVolver">
                         <Link to="/user" onClick={this.handleClick} className="BotonEntrar">Entrar</Link>
