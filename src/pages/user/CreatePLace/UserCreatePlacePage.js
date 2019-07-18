@@ -33,7 +33,13 @@ class UserCreatePlacePage extends React.Component {
                 if (res.data.verifyToken != null) {
                     this.setState({
                         status: res.data.verifyToken.status,
-                        load: <UserCreatePlacePageSuccess />,
+                        load: <UserCreatePlacePageSuccess 
+                        
+                        google={this.props.google}
+                        center={{ lat: 4.635751099, lng: -74.0834692 }}
+                        height='400px'
+                        zoom={15}
+                        />,
                     })
                     // console.log(res.data.verifyToken.status)
                 } else {
