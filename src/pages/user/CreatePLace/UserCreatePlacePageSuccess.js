@@ -4,14 +4,67 @@ import './UserCreatePlacePage.css';
 import '../../../GeneralStyles.css';
 import MenuNavegacion from '../../../components/MenuNav/MenuNavegacion';
 
+import { withGoogleMap, GoogleMap, withScriptjs, Marker } from "react-google-maps";
+import Geocode from "react-geocode";
+Geocode.setApiKey("AIzaSyCOJZ-oU1uV5KmoxNS9zWBr2emcUZWjXUc");
+Geocode.enableDebug();
+
 class UserCreatePlacePageSuccess extends React.Component {
 
-    state = {
-        CampoNombre: "",
-        CampoDescripcion: "",
-        CampoLatitud: "",
-        CampoLongitud: ""
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            CampoNombre: "",
+            CampoDescripcion: "",
+            CampoLatitud: "",
+            CampoLongitud: "",
+            mapPosition: {
+                lat: this.props.center.lat,
+                lng: this.props.center.lng
+            },
+            markerPosition: {
+                lat: this.props.center.lat,
+                lng: this.props.center.lng
+            }
+        }
     }
+
+    // state = {
+    //     CampoNombre: "",
+    //     CampoDescripcion: "",
+    //     CampoLatitud: "",
+    //     CampoLongitud: ""
+    // }
+
+    onMarkerDragEnd = (event) => {
+        let newLat = event.latLng.lat(),
+            newLng = event.latLng.lng();
+        Geocode.fromLatLng(newLat, newLng).then(
+            response => {
+                var latValue = response.results[0].geometry.location.lat
+                var lngValue = response.results[0].geometry.location.lng
+                console.log("POSICION")
+                console.log(response.results[0].geometry.location.lat)
+                console.log(response.results[0].geometry.location.lng)
+                this.setState({
+                    markerPosition: {
+                        lat: latValue,
+                        lng: lngValue
+                    },
+                    mapPosition: {
+                        lat: latValue,
+                        lng: lngValue
+                    },
+                    CampoLatitud: latValue,
+                    CampoLongitud: lngValue
+                })
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    };
 
     componentWillMount() {
         const query = `
@@ -111,67 +164,192 @@ class UserCreatePlacePageSuccess extends React.Component {
 
     }
 
-    render() {
-        return (
-            < div className="UserCreatePlacePageSuccess" >
+    // render() {
+    //     return (
+    //         < div className="UserCreatePlacePageSuccess" >
 
-                <MenuNavegacion
-                    LinkDatosPersonales="LinkInactivo"
-                    LinkCrearLugar="LinkActivo"
-                    LinkBorrarLugar="LinkInactivo"
-                    LinkLugares="LinkInactivo"
-                    LinkCrearRuta="LinkInactivo"
-                    LinkBorrarRuta="LinkInactivo"
-                    LinkRutas="LinkInactivo"
-                    LinkEliminarCuenta="LinkInactivo"
+    //             <MenuNavegacion
+    //                 LinkDatosPersonales="LinkInactivo"
+    //                 LinkCrearLugar="LinkActivo"
+    //                 LinkBorrarLugar="LinkInactivo"
+    //                 LinkLugares="LinkInactivo"
+    //                 LinkCrearRuta="LinkInactivo"
+    //                 LinkBorrarRuta="LinkInactivo"
+    //                 LinkRutas="LinkInactivo"
+    //                 LinkEliminarCuenta="LinkInactivo"
+    //             />
+
+
+    //             <div className="ObjetivoMenuLateralNuevo">
+    //                 <div className="TituloTarget">
+    //                     <h1>Crea Un Nuevo Lugar</h1>
+    //                 </div>
+
+
+    //                 <div className="ContenedorCrearLugar">
+    //                     <div className="ContenedorLabelsData">
+    //                         <div className="OrdenarInformacion">
+    //                             <div className="LabelUserData">
+    //                                 <label >Lugar:</label>
+    //                             </div>
+    //                             <input className="InputUserData" onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
+    //                         </div>
+
+    //                         <div className="OrdenarInformacion">
+    //                             <div className="LabelUserData">
+    //                                 <label>Descripción:</label>
+    //                             </div>
+    //                             <input className="InputUserData" onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
+    //                         </div>
+
+    //                         <div className="OrdenarInformacion">
+    //                             <div className="LabelUserData">
+    //                                 <label>Latitud:</label>
+    //                             </div>
+    //                             <input className="InputUserData" onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
+    //                         </div>
+
+    //                         <div className="OrdenarInformacion">
+    //                             <div className="LabelUserData">
+    //                                 <label>Longitud:</label>
+    //                             </div>
+    //                             <input className="InputUserData" onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
+    //                         </div>
+    //                     </div>
+    //                 </div>
+
+    //                 <div>
+    //                     <button className="BotonCrearLugar" onClick={this.handleClick}>Crear Lugar</button>
+    //                 </div>
+    //             </div>
+    //         </div >
+    //     );
+    // }
+
+
+    render() {
+        const AsyncMap = withScriptjs(
+            withGoogleMap(
+                props => (
+
+
+                    
+                                <GoogleMap google={this.props.google}
+                                    defaultZoom={this.props.zoom}
+                                    defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
+                                >
+                                    <Marker google={this.props.google}
+                                        name={'Dolores park'}
+                                        draggable={true}
+                                        onDragEnd={this.onMarkerDragEnd}
+                                        position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
+                                    />
+                                    <Marker />
+                                </GoogleMap>
+
+                        
+
+
+
+                   
+                )
+            )
+        );
+        let map;
+        if (this.props.center.lat !== undefined) {
+            map = <div>
+
+
+
+< div className="UserCreatePlacePageSuccess" >
+
+              <MenuNavegacion
+                LinkDatosPersonales="LinkInactivo"
+                LinkCrearLugar="LinkActivo"
+                LinkBorrarLugar="LinkInactivo"
+                LinkLugares="LinkInactivo"
+                LinkCrearRuta="LinkInactivo"
+                LinkBorrarRuta="LinkInactivo"
+                LinkRutas="LinkInactivo"
+                LinkEliminarCuenta="LinkInactivo"
+            />
+
+
+            <div className="ObjetivoMenuLateralNuevo">
+                <div className="TituloTarget">
+                    <h1>Crea Un Nuevo Lugar</h1>
+                </div>
+
+
+                <div className="ContenedorCrearLugar">
+                    <div className="ContenedorLabelsData">
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label >Lugar:</label>
+                            </div>
+                            <input className="InputUserData" onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Descripción:</label>
+                            </div>
+                            <input className="InputUserData" onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Latitud:</label>
+                            </div>
+                            <input className="InputUserData" onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
+                        </div>
+
+                        <div className="OrdenarInformacion">
+                            <div className="LabelUserData">
+                                <label>Longitud:</label>
+                            </div>
+                            <input className="InputUserData" onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <AsyncMap
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOJZ-oU1uV5KmoxNS9zWBr2emcUZWjXUc&libraries=places"
+                    loadingElement={
+                        <div style={{ height: `100%` }} />
+                    }
+                    containerElement={
+                        <div style={{ height: this.props.height }} />
+                    }
+                    mapElement={
+                        <div style={{ height: `100%` }} />
+                    }
                 />
 
 
-                <div className="ObjetivoMenuLateralNuevo">
-                    <div className="TituloTarget">
-                        <h1>Crea Un Nuevo Lugar</h1>
-                    </div>
 
 
-                    <div className="ContenedorCrearLugar">
-                        <div className="ContenedorLabelsData">
-                            <div className="OrdenarInformacion">
-                                <div className="LabelUserData">
-                                    <label >Lugar:</label>
-                                </div>
-                                <input className="InputUserData" onChange={this.handleChange} name="CampoNombre" value={this.state.CampoNombre} />
-                            </div>
-
-                            <div className="OrdenarInformacion">
-                                <div className="LabelUserData">
-                                    <label>Descripción:</label>
-                                </div>
-                                <input className="InputUserData" onChange={this.handleChange} name="CampoDescripcion" value={this.state.CampoDescripcion} />
-                            </div>
-
-                            <div className="OrdenarInformacion">
-                                <div className="LabelUserData">
-                                    <label>Latitud:</label>
-                                </div>
-                                <input className="InputUserData" onChange={this.handleChange} name="CampoLatitud" value={this.state.CampoLatitud} />
-                            </div>
-
-                            <div className="OrdenarInformacion">
-                                <div className="LabelUserData">
-                                    <label>Longitud:</label>
-                                </div>
-                                <input className="InputUserData" onChange={this.handleChange} name="CampoLongitud" value={this.state.CampoLongitud} />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <button className="BotonCrearLugar" onClick={this.handleClick}>Crear Lugar</button>
-                    </div>
+                <div>
+                    <button className="BotonCrearLugar" onClick={this.handleClick}>Crear Lugar</button>
                 </div>
-            </div >
-        );
+            </div>
+        </div > 
+
+
+
+
+               
+            </div>
+        } else {
+            map = <div style={{ height: this.props.height }} />
+        }
+        return (map)
     }
+
+
+
 }
 
 export default UserCreatePlacePageSuccess;
